@@ -5,5 +5,6 @@
 <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/jquery/jquery.dim-background.js') }}"></script>
 <script src="{{ asset('js/script.js') }}"></script>
+@yield('script')
 </body>
 </html>

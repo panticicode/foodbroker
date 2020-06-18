@@ -143,6 +143,10 @@ hr{
     border-top: 1px solid #dee2e6;
     vertical-align: middle;
 }
+.table i {
+    font-size: 30px;
+    color: #e73227;
+}
 #backToPrev {
     font-size: 30px;
     color: #e73227;
@@ -181,6 +185,20 @@ hr{
 }
 #order form label span {
   color: red;
+}
+/**Pagination**/
+.pagination {
+    /*justify-content: flex-end;
+    padding-right: 50px;*/
+}
+.page-item.active .page-link {
+    background-color: #e73227;
+    border-color: #e73227;
+}
+.page-link {
+    color: #e73227;
+    background-color: #60bfc1;
+    border: 1px solid #e73227;
 }
 @media (min-width: 1200px){
   .bordered {

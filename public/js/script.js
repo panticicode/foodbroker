@@ -86,6 +86,12 @@ $(() => {
 				        	flex: "0 0 6.333333%",
 	    					maxWidth: "6.333333%"
 				        })
+				      // let id = $(evt.target).data("id")
+				      // alert(id)
+    					// $('.img-thumbnail').hide()
+
+
+				        
 				    }  
 			    },
 			    touchstart: (evt) => {
@@ -195,14 +201,19 @@ $(() => {
 	})
 	$("#nastavi button").on("click", () => {
         $("#cart").hide()
-        $("#order").show()
+        $("#order").show(500)
     })
 	/**Section Cart **/
 	/**Section Order**/
 	$("#order #backToPrev").on("click", () => {
 		$("#order").hide()
-		$("#cart").show()
+		$("#cart").show(500)
 	})
+
+	/**Pagination**/
+	 $(window).on("load", (evt) => {
+        $(".pagination .page-item").removeClass('disabled')
+    })
 })
 
 
