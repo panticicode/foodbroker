@@ -67,7 +67,7 @@ img {
     border-radius: 50%;
     background-color: #e73227;
 }  
-#cat-10 button {
+#cat-10 a {
   position:relative;
 } 
 .img-thumbnail h3 {
@@ -99,7 +99,7 @@ hr{
   font-size: 15px;
   line-height: 2
 }
-#input {
+.input {
   color: #555;
   font-size: 15px;
 
@@ -237,7 +237,7 @@ hr{
       font-size: 10px;
       line-height: 0
     }
-    #input {
+    .input {
       font-size: 14px;
       margin: 10px auto;
       font-weight:300;
@@ -286,7 +286,7 @@ hr{
       font-size: 10px;
       line-height: 0
     }
-    #input {
+    .input {
       font-size: 10px;
       width: 70%;
       margin: 10px auto
@@ -406,7 +406,7 @@ hr{
       font-size: 10px;
       line-height: 0
     }
-    #input {
+    .input {
       font-size: 10px;
       width: 70%;
       margin: 10px auto
@@ -460,7 +460,7 @@ hr{
       font-size: 10px;
       line-height: 0
     }
-    #input {
+    .input {
       font-size: 10px;
       width: 70%;
       margin: 0px auto
@@ -601,7 +601,7 @@ and (max-device-width: 823px) {
       font-size: 10px;
       line-height: 0
     }
-    #input {
+    .input {
       font-size: 10px;
       width: 70%;
       margin: 10px auto
@@ -648,3 +648,9 @@ and (max-device-width: 1024px) {
 
 
   
+#cat-product {
+  display: none;
+}  
+.cat-product {
+  display:block!important;
+}

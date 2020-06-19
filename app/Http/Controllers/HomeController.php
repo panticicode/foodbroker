@@ -14,6 +14,8 @@ class HomeController extends Controller
     	$catAll = Category::all();
     	$products = Product::all();
     	$defaults = Product::where('cat_id', 1)->get();
+       
+        //dd($defaults);
     	return view('front/home', [
     		'categories' => $categories,
     		'catAll' => $catAll,

@@ -19,7 +19,7 @@
 				 <div class="ml-auto mr-3">
 				<button type="button" class="btn btn-success float-right">
 					KORPA
-					<span class="count">4</span>
+					<span class="count">{{ Cart::content()->count() }}</span>
 				</button>
 
 				</div>	
@@ -33,7 +33,20 @@
 						<figure class="figure">
 				  			<img src="{{ $product->getImage($product->image) }}" class="figure-img img-fluid rounded-circle" alt="placeholder">
 						  	<figcaption class="figure-caption">
-						  		<h3>{{ $product->title }}</h3>	
+						  		<h3>{{ $product->title }}</h3>
+						  		<div class="row seek">
+									<form><hr class="mt-4">
+										<div class="form-group" style="margin-bottom: 0" id="input-container">
+											<label for="input">ODABERITE KOLICINU:</label>
+								            <input type="number" class="form-control" step="0.1" min="0" value="0.0">
+								            <span id="kg">KG</span>
+								        </div>
+								        <button id="dodaj" class="btn btn-danger btn-block mt-4" type="button">
+					                		<i class="fas fa-shopping-cart" style="position:relative; margin-right:40%"><span>Dodaj</span>
+					                		</i>
+					                	</button>
+				                	</form>
+				                </div>	
 						  	</figcaption>
 						</figure>
 					</div>
@@ -49,6 +62,21 @@
 				  			<img src="{{ $product->getImage($product->image) }}" class="figure-img img-fluid rounded-circle" alt="placeholder">
 						  	<figcaption class="figure-caption">
 						  		<h3>{{ $product->title }}</h3>	
+						  		<div class="row seek">
+									<form action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
+									{{ csrf_field() }}
+										<hr class="mt-4">
+										<div class="form-group" style="margin-bottom: 0" id="input-container">
+											<label for="input">ODABERITE KOLICINU:</label>
+								            <input type="number" class="form-control" id="input" name="qty" step="0.1" min="0" value="0.0">
+								            <span id="kg">KG</span>
+								        </div>
+								        <button id="dodaj" class="btn btn-danger btn-block mt-4">
+					                		<i class="fas fa-shopping-cart" style="position:relative; margin-right:40%"><span>Dodaj</span>
+					                		</i>
+					                	</button>
+				                	</form>
+				                </div>
 						  	</figcaption>
 						</figure>
 					</div>

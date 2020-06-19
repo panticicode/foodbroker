@@ -3,7 +3,7 @@
 		@foreach($categories as $category)
 		<div class="row justify-content-md-center">
 			<div class="col-lg-2 col-md-4 col-sm-4 col-4">
-				<a href="#">
+				<a href="{{ route('product') }}">
 					<img class="img-fluid rounded-circle" src="{{ $category->getImage($category->image) }}">
 				</a>
 			</div>

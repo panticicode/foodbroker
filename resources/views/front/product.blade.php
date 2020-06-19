@@ -1,0 +1,158 @@
+@extends('front.layouts.app')
+@section('main')
+<section id="category" class="category">
+	<div class="row">
+		<div id="cat-1" class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2 bordered mt-5 mb-3">
+			@foreach($catAll as $category)
+			<div id="block-thumbnail">
+				<a href="#">
+					<img class="img-fluid rounded-circle" src="{{ $category->getImage($category->image) }}" data-id="{{ $category->id }}">
+				</a>
+			</div>
+			@endforeach
+		</div>
+		<div id="cat-10" class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 fruit mt-3">
+			<div class="row ml-3">
+				<div>
+					<h2 class="float-left">
+						Voce:
+					</h2>
+				</div>	
+				 <div class="ml-auto mr-3">
+				<a href="#" class="btn btn-success float-right">
+					KORPA
+					<span class="count">{{ Cart::content()->count() }}</span>
+				</a>
+
+				</div>	
+			</div>	
+			<hr class="ml-3">
+			<div class="row ml-1" data-counter="{{ $defaults }}">
+				@foreach($products as $product)
+				<div id="{{ $product->cat_id }}" class="col-4 content">
+					<div class="img-thumbnail">
+						<figure class="figure">
+				  			<img src="{{ $product->getImage($product->image) }}" class="figure-img img-fluid rounded-circle" alt="placeholder">
+						  	<figcaption class="figure-caption">
+						  		<h3>{{ $product->title }}</h3>	
+						  		<div class="row seek">
+									<form action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
+									{{ csrf_field() }}
+										<hr class="mt-4">
+										<div class="form-group" style="margin-bottom: 0" id="input-container">
+											<label for="input">ODABERITE KOLICINU:</label>
+								            <input type="number" class="form-control input" name="qty" step="0.1" min="0" value="0.0">
+								            <span id="kg">KG</span>
+								        </div>
+								        <button class="btn btn-danger btn-block mt-4">
+					                		<i class="fas fa-shopping-cart" style="position:relative; margin-right:40%"><span>Dodaj</span>
+					                		</i>
+					                	</button>
+				                	</form>
+				                </div>
+						  	</figcaption>
+						</figure>
+					</div>
+				</div>
+				@endforeach
+			</div>
+		</div>
+	</div>
+</section>
+<section id="cart"	class="cart">
+	<form action="{{ route('cart.update') }}" method="post">
+	{{ csrf_field() }}
+		<div class="container">
+			<div class="table-responsive">
+				<table class="table">
+					<thead class="thead-light">
+					    <tr>
+					      	<th scope="col">
+					      		<i id="backToPrev" class="fas fa-undo-alt"></i>
+					      	</th>
+					      	<th scope="col">Slika</th>
+					      	<th scope="col">Proizvod</th>
+					      	<th scope="col">Cena</th>
+					      	<th scope="col">Kolicina</th>
+					      	<th scope="col">Ukupno</th>
+					    </tr>
+					</thead>
+					<tbody>
+					@foreach(Cart::content() as $product)
+					<tr>
+				      	<th scope="row">
+				      		<a href="{{ route('cart.delete', ['id' => $product->rowId]) }}">
+					      		<i class="fa fa-times-circle deleteRow" aria-hidden="true"></i>
+					      	</a>
+						</th>
+				      	<td>
+				      		<a href="#">
+								<img class="img-fluid" src="{{ asset($product->model->getImage($product->model->image)) }}">
+							</a>
+				      	</td>
+				      	<td>{{ $product->name }}</td>
+				      	<td>{{ $product->price }}</td>
+				      	<td style="width: 10%">
+				      		<input id="input-korpa" type="number" name="cart" step="0.1" min="0" class="form-control" value="{{ $product->qty }}">	
+				      	</td>
+				      	<td>{{ $product->total }} Dinara</td>
+				    </tr>
+					@endforeach
+					    <tr>
+					      	<th scope="row">
+					      		TOTAL:
+							</th>
+					      	<td></td>
+					      	<td></td>
+					      	<td></td>
+					      	<td></td>
+					      	<td>
+					      		<span>{{ Cart::total() }} Dinara</span>   
+					      	</td>
+					    </tr>
+					</tbody>
+				</table>	
+			</div>
+			<div id="small-screen">
+				<div id="azuriraj" class="form-group">
+					<button class="btn btn-outline-secondary">
+						AZURIRAJ KORPU
+					</button>
+				</div>
+				<div id="nastavi" class="form-group">
+					<a href="#" class="btn btn-outline-dark">
+						NASTAVI KA KUPOVINI
+					</a>
+				</div>	
+			</div>
+		</div>
+	</form>	
+</section>
+@endsection
+@section('script')
+<script>
+	$(function() {
+		var defaultProduct = $(".content").parent().data('counter')
+	   	$(".content").each(function() {
+	        $(this).hide();
+		    if($(this).attr('id') == 'main') {
+		        $(this).show();
+		    }
+		});
+		$.each(defaultProduct, function(id){
+			$(".content").eq(id).show()
+		});
+		$('#block-thumbnail a img').on( "click", function(e) {
+		    e.preventDefault();
+		    var id = $(this).attr('data-id'); 
+		    $(".content").each(function(){
+		        $(this).hide();
+		        $('.main-default').hide();
+		        if($(this).attr('id') == id) {
+		            $(this).show();
+		        }
+		    });
+		}); 
+	});
+</script>
+@endsection
