@@ -2,7 +2,10 @@
 @section('main')
 <section id="order" class="order">
 	<div class="container">
-		<h2 class="mt-5"><i id="backToPrev" class="fas fa-undo-alt float-left"></i>
+		<h2 class="mt-5">
+			<a href="{{ route('cart') }}">
+				<i id="backToPrev" class="fas fa-undo-alt float-left"></i>
+			</a>
 			Detalji Porudzbine
 		</h2>
 		<form class="mb-3">
@@ -90,5 +93,10 @@
 @section('script')
 <script>
 	$("#order").show(500)
+	$(function(){
+		$("#backToPrev").click(function(){
+			$("#order").hide(750)
+		})
+	})
 </script>
 @endsection

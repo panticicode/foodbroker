@@ -50,7 +50,7 @@ class ShoppingController extends Controller
 
         return redirect('product');
     }
-    public function cart_create(Request $request)
+    public function cart_create()
     {
         foreach(Cart::content() as $cart)
         {
@@ -61,11 +61,10 @@ class ShoppingController extends Controller
                 'qty' => $cart->qty
             ]);
         }
-        return redirect('cart');
+        return redirect('order');
     }
     public function cart_increase($id, $qty)
     { 
-        $request = request();
         Cart::update($id, $qty + 1);
         return redirect('cart');
     }

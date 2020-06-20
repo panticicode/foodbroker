@@ -155,6 +155,12 @@ hr{
     font-size: 25px;
     color: #828990;
 }
+.table span.qty {
+  padding: 8px 10px 7px 15px;
+  border: 1px solid #463636;
+  border-radius: 25px;
+  margin-right: 4px;
+}
 #backToPrev {
     font-size: 30px;
     color: #e73227;

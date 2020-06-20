@@ -68,16 +68,14 @@
 					<thead class="thead-light">
 					    <tr>
 					      	<th scope="col">
-						      	<a href="{{ route('product') }}">
-						      		<i class="fas fa-undo-alt xLeft"></i>
+						      	<a href="#">
+						      		<i id="backToPrev" class="fas fa-undo-alt xLeft"></i>
 						      	</a>
 					      	</th>
 					      	<th scope="col">Slika</th>
 					      	<th scope="col">Proizvod</th>
 					      	<th scope="col">Cena</th>
-							<th scope="col"></th>
 					      	<th scope="col">Kolicina</th>
-					      	<th scope="col"></th>
 					      	<th scope="col">Ukupno</th>
 					    </tr>
 					</thead>
@@ -97,20 +95,18 @@
 				      	<td>{{ $product->name }}</td>
 				      	<td>{{ $product->price }}</td>
 				      	<td>
-				      		<a href="{{ route('cart.reduce', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
+                            <a href="{{ route('cart.reduce', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
 				      			<i class="fa fa-minus-circle" aria-hidden="true"></i>
 				      		</a>
-				      	</td>
-				      	<td style="width: 10%">
-				      		<input type="hidden" name="rowId[]" value="{{ $product->rowId }}">
-				      		<input id="input-korpa" type="number" name="qty[]" step="0.1" min="0" class="form-control" value="{{ $product->qty }}">	
-				      	</td>
-				      	<td>
-				      		<a href="{{ route('cart.increase', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
+				      		<input type="hidden" name="qty[]" value="{{ $product->qty }}">
+				      		<span class="qty">
+				      			{{ $product->qty }}	
+				      		</span>
+                            <a href="{{ route('cart.increase', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
 				      			<i class="fa fa-plus-circle" aria-hidden="true"></i>
 				      		</a>
 				      	</td>
-				      	<td>{{ $product->subtotal }} Dinara</td>
+				      	<td>{{ $product->subtotal }} RSD</td>
 				    </tr>
 					@endforeach
 					    <tr>
@@ -121,10 +117,10 @@
 					      	<td></td>
 					      	<td></td>
 					      	<td></td>
-					      	<td></td>
-					      	<td></td>
 					      	<td>
-					      		<span>{{ Cart::subtotal() }} Dinara</span>   
+					      		<span>
+					      			{{ Cart::subtotal() }} RSD
+					      		</span>   
 					      	</td>
 					    </tr>
 					</tbody>
@@ -165,6 +161,14 @@
 		        }
 		    });
 		}); 
+		$(".btn-success").click(function (){
+			$("#category").hide()
+			$("#cart").show(500) 
+		})
+		$("#backToPrev").click(function(){
+			$("#cart").hide()
+			$("#category").show()
+		})
 	});
 </script>
 @endsection

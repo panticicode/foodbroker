@@ -146,14 +146,6 @@ $(() => {
     /**For Redirect only**/
 	/**Section Main **/
 	/**Section Cart **/
-	$(".btn-success").on("click", () => {
-		$("#category").hide()
-		$("#cart").show(500) 
-	})
-	$("#cart #backToPrev").on("click", () => {
-		$("#cart").hide()
-		$("#category").show()
-	}) 
 	if($(window).innerWidth() < 576)
 	{
 		$("#small-screen button").addClass("btn-block")
@@ -166,12 +158,6 @@ $(() => {
         $("#order").show(500)
     })
 	/**Section Cart **/
-	/**Section Order**/
-	$("#order #backToPrev").on("click", () => {
-		$("#order").hide()
-		$("#cart").show(500)
-	})
-
 	/**Pagination**/
 	 $(window).on("load", (evt) => {
 	 	$(".seek").hide()
