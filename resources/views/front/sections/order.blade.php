@@ -1,3 +1,5 @@
+@extends('front.layouts.app')
+@section('main')
 <section id="order" class="order">
 	<div class="container">
 		<h2 class="mt-5"><i id="backToPrev" class="fas fa-undo-alt float-left"></i>
@@ -84,3 +86,9 @@
 		</form>
 	</div>
 </section>
+@endsection
+@section('script')
+<script>
+	$("#order").show(500)
+</script>
+@endsection

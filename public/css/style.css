@@ -143,9 +143,17 @@ hr{
     border-top: 1px solid #dee2e6;
     vertical-align: middle;
 }
-.table i {
+.table .xLeft {
     font-size: 30px;
     color: #e73227;
+}
+.table .deleteRow {
+    font-size: 25px;
+    color: #e73227;
+}
+.table i {
+    font-size: 25px;
+    color: #828990;
 }
 #backToPrev {
     font-size: 30px;

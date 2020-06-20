@@ -3,7 +3,7 @@
 <section id="category" class="category">
 	<div class="row">
 		<div id="cat-1" class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2 bordered mt-5 mb-3">
-			@foreach($catAll as $category)
+			@foreach($categories as $category)
 			<div id="block-thumbnail">
 				<a href="#">
 					<img class="img-fluid rounded-circle" src="{{ $category->getImage($category->image) }}" data-id="{{ $category->id }}">
@@ -60,7 +60,7 @@
 	</div>
 </section>
 <section id="cart"	class="cart">
-	<form action="{{ route('cart.update') }}" method="post">
+	<form action="{{ route('cart.create') }}" method="post">
 	{{ csrf_field() }}
 		<div class="container">
 			<div class="table-responsive">
@@ -68,12 +68,16 @@
 					<thead class="thead-light">
 					    <tr>
 					      	<th scope="col">
-					      		<i id="backToPrev" class="fas fa-undo-alt"></i>
+						      	<a href="{{ route('product') }}">
+						      		<i class="fas fa-undo-alt xLeft"></i>
+						      	</a>
 					      	</th>
 					      	<th scope="col">Slika</th>
 					      	<th scope="col">Proizvod</th>
 					      	<th scope="col">Cena</th>
+							<th scope="col"></th>
 					      	<th scope="col">Kolicina</th>
+					      	<th scope="col"></th>
 					      	<th scope="col">Ukupno</th>
 					    </tr>
 					</thead>
@@ -87,15 +91,26 @@
 						</th>
 				      	<td>
 				      		<a href="#">
-								<img class="img-fluid" src="{{ asset($product->model->getImage($product->model->image)) }}">
+								<img class="img-fluid" src="{{ asset($product->model->getImage($product->model->image)) }}" style="width: 70px; height: 80px">
 							</a>
 				      	</td>
 				      	<td>{{ $product->name }}</td>
 				      	<td>{{ $product->price }}</td>
-				      	<td style="width: 10%">
-				      		<input id="input-korpa" type="number" name="cart" step="0.1" min="0" class="form-control" value="{{ $product->qty }}">	
+				      	<td>
+				      		<a href="{{ route('cart.reduce', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
+				      			<i class="fa fa-minus-circle" aria-hidden="true"></i>
+				      		</a>
 				      	</td>
-				      	<td>{{ $product->total }} Dinara</td>
+				      	<td style="width: 10%">
+				      		<input type="hidden" name="rowId[]" value="{{ $product->rowId }}">
+				      		<input id="input-korpa" type="number" name="qty[]" step="0.1" min="0" class="form-control" value="{{ $product->qty }}">	
+				      	</td>
+				      	<td>
+				      		<a href="{{ route('cart.increase', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
+				      			<i class="fa fa-plus-circle" aria-hidden="true"></i>
+				      		</a>
+				      	</td>
+				      	<td>{{ $product->subtotal }} Dinara</td>
 				    </tr>
 					@endforeach
 					    <tr>
@@ -106,8 +121,10 @@
 					      	<td></td>
 					      	<td></td>
 					      	<td></td>
+					      	<td></td>
+					      	<td></td>
 					      	<td>
-					      		<span>{{ Cart::total() }} Dinara</span>   
+					      		<span>{{ Cart::subtotal() }} Dinara</span>   
 					      	</td>
 					    </tr>
 					</tbody>
@@ -116,14 +133,9 @@
 			<div id="small-screen">
 				<div id="azuriraj" class="form-group">
 					<button class="btn btn-outline-secondary">
-						AZURIRAJ KORPU
-					</button>
-				</div>
-				<div id="nastavi" class="form-group">
-					<a href="#" class="btn btn-outline-dark">
 						NASTAVI KA KUPOVINI
-					</a>
-				</div>	
+					</button>
+				</div>		
 			</div>
 		</div>
 	</form>	

@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 @section('main')
 <section id="cart"	class="cart">
-	<form action="{{ route('cart.update') }}" method="post">
+	<form action="{{ route('cart.create') }}" method="post">
 	{{ csrf_field() }}
 		<div class="container">
 			<div class="table-responsive">
@@ -10,13 +10,15 @@
 					    <tr>
 					      	<th scope="col">
 						      	<a href="{{ route('product') }}">
-						      		<i class="fas fa-undo-alt"></i>
+						      		<i class="fas fa-undo-alt xLeft"></i>
 						      	</a>
 					      	</th>
 					      	<th scope="col">Slika</th>
 					      	<th scope="col">Proizvod</th>
 					      	<th scope="col">Cena</th>
+							<th scope="col"></th>
 					      	<th scope="col">Kolicina</th>
+					      	<th scope="col"></th>
 					      	<th scope="col">Ukupno</th>
 					    </tr>
 					</thead>
@@ -30,15 +32,26 @@
 						</th>
 				      	<td>
 				      		<a href="#">
-								<img class="img-fluid" src="{{ asset($product->model->getImage($product->model->image)) }}" style="width: 70px; height: 100px">
+								<img class="img-fluid" src="{{ asset($product->model->getImage($product->model->image)) }}" style="width: 70px; height: 80px">
 							</a>
 				      	</td>
 				      	<td>{{ $product->name }}</td>
 				      	<td>{{ $product->price }}</td>
-				      	<td style="width: 10%">
-				      		<input id="input-korpa" type="number" name="cart" step="0.1" min="0" class="form-control" value="{{ $product->qty }}">	
+				      	<td>
+				      		<a href="{{ route('cart.reduce', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
+				      			<i class="fa fa-minus-circle" aria-hidden="true"></i>
+				      		</a>
 				      	</td>
-				      	<td>{{ $product->total }} Dinara</td>
+				      	<td style="width: 10%">
+				      		<input type="hidden" name="rowId[]" value="{{ $product->rowId }}">
+				      		<input id="input-korpa" type="number" name="qty[]" step="0.1" min="0" class="form-control" value="{{ $product->qty }}">	
+				      	</td>
+				      	<td>
+				      		<a href="{{ route('cart.increase', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
+				      			<i class="fa fa-plus-circle" aria-hidden="true"></i>
+				      		</a>
+				      	</td>
+				      	<td>{{ $product->subtotal() }} Dinara</td>
 				    </tr>
 					@endforeach
 					    <tr>
@@ -49,8 +62,10 @@
 					      	<td></td>
 					      	<td></td>
 					      	<td></td>
+					      	<td></td>
+					      	<td></td>
 					      	<td>
-					      		<span>{{ Cart::total() }} Dinara</span>   
+					      		<span>{{ Cart::subtotal() }} Dinara</span>   
 					      	</td>
 					    </tr>
 					</tbody>
@@ -59,13 +74,8 @@
 			<div id="small-screen">
 				<div id="azuriraj" class="form-group">
 					<button class="btn btn-outline-secondary">
-						AZURIRAJ KORPU
-					</button>
-				</div>
-				<div id="nastavi" class="form-group">
-					<a class="btn btn-outline-dark">
 						NASTAVI KA KUPOVINI
-					</a>
+					</button>
 				</div>	
 			</div>
 		</div>	
@@ -74,6 +84,6 @@
 @endsection
 @section('script')
 <script>
-	$("#cart").show()
+	$("#cart").show(500)
 </script>
 @endsection
