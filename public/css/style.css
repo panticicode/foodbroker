@@ -110,7 +110,12 @@ hr{
   top: 41px;
   color: #555;
 }
-
+#kom {
+  position: absolute;
+  left: 31px;
+  top: 41px;
+  color: #555;
+}
 .seek button i span{
   position:absolute!important; 
   padding:0 5px !important;
@@ -268,6 +273,11 @@ hr{
       left: 35px;
       top: 35px;
     }
+    #kom {
+      font-size: 12px;
+      left: 29px;
+      top: 35px;
+    }
 }
 @media (min-width: 768px) and (max-width: 991px){
     .category #cat-1 img {
@@ -328,6 +338,10 @@ hr{
       left: 50px;
       top: 33px!important;
     }
+    #kom {
+      left: 44px;
+      top: 33px!important;
+    }
 }
 @media (min-width: 576px) and (max-width: 767px){
     .bordered {
@@ -359,6 +373,9 @@ hr{
         float:left; 
     }
     #kg {
+      top: 33px!important;
+    }
+    #kom {
       top: 33px!important;
     }
 }
@@ -445,6 +462,10 @@ hr{
       left: 47px;
       top: 33px;
     }
+    #kom {
+      left: 41px;
+      top: 33px!important;
+    }
 }
 @media (min-width: 320px) and (max-width: 411px){
     #category {
@@ -528,6 +549,10 @@ hr{
       left: 47px;
       top: 24px;
     }
+    #kom {
+      left: 41px;
+      top: 24px!important;
+    }
 } 
 @media (min-width: 375px) and (max-width: 410px){
    main h3 {
@@ -560,6 +585,10 @@ hr{
       left: 47px;
       top: 23px;
    }
+   #kom {
+      left: 41px;
+      top: 23px;
+    }
 } 
 @media (min-width: 320px) and (max-width: 360px){
     main h3 {
@@ -596,10 +625,14 @@ hr{
       font-size: .4rem;
       font-weight:400;
     }
-     #kg {
+    #kg {
       left: 44px;
       top: 25px;
-   }
+    }
+    #kom {
+      left: 38px;
+      top: 25px;
+    }
 }    
 @media screen and (orientation:landscape)
 and (min-device-width: 640px) 
@@ -643,6 +676,10 @@ and (max-device-width: 823px) {
     #kg {
       left: 51px;
       top: 32px;
+    }
+    #kom {
+      left: 45px;
+      top: 25px;
     }
 }
 @media screen and (orientation:landscape)

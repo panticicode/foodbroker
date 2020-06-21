@@ -111,6 +111,9 @@ class CartItem implements Arrayable, Jsonable
         if (strlen($price) < 0 || !is_numeric($price)) {
             throw new \InvalidArgumentException('Please supply a valid price.');
         }
+        if (strlen($weight) < 0 || !is_numeric($weight)) {
+            throw new \InvalidArgumentException('Please supply a valid weight.');
+        }
 
         $this->id = $id;
         $this->name = $name;
@@ -467,7 +470,7 @@ class CartItem implements Arrayable, Jsonable
     {
         $options = Arr::get($attributes, 'options', []);
 
-        return new self($attributes['id'], $attributes['name'], $attributes['price'], $options);
+        return new self($attributes['id'], $attributes['name'], $attributes['price'], $attributes['weight'], $options);
     }
 
     /**

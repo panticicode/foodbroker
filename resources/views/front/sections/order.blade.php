@@ -51,7 +51,7 @@
 		    	<label for="inputDate">
 		      		Datum i Vreme isporuke<span> *</span>
 		      	</label>
-			   	<input id="inputDate" type="datetime-local" class="form-control">
+			   	<input id="inputDate" type="date" class="form-control">
 		    </div>
 		    <div class="form-group">
 		        <label for="inputCity">

@@ -15,6 +15,7 @@ class ShoppingController extends Controller
         $categories = Category::all();
         $products = Product::all();
         $defaults = Product::where('cat_id', 1)->get();
+
         return view('front/sections/product', [
             'categories' => $categories,
             'products' => $products,
@@ -32,23 +33,47 @@ class ShoppingController extends Controller
     public function cart_add($id)
     {
         $request = request();
+        
         $product = Product::find($id);
+
+        if(empty($request->weight))
+        {
+            $weight = 0;
+
+        }
+        else
+        {
+            $weight = $request->weight;
+        }
+        if(empty($request->qty))
+        {
+            $qty = 1;
+        }
+        else
+        {
+            $qty = $request->qty;
+        }
         $cartItem = Cart::add([
             'id' => $product->id,
             'name' => $product->title,
-            'qty' => $request->qty,
-            'price' => $product->price
+            'qty' => $qty,
+            'weight' => $weight,
+            'price' => $product->price,
+            'options' => [
+                'quantity' => $request->quantity 
+            ]
         ]);
-
         // $carts = CartItem::create([
         //     'row_id' => $cartItem->rowId,
         //     'user_id' => 1,
-        //     'qty' => $request->qty
+        //     'qty' => $request->qty,
+        //     'weight' => $request->weight
         // ]);
 
         Cart::associate($cartItem->rowId, 'App\Models\Product');
 
         return redirect('product');
+       
     }
     public function cart_create()
     {
@@ -58,17 +83,41 @@ class ShoppingController extends Controller
                 'row_id' => $cart->rowId,
                 'user_id' => 3,
                 'product_id' => $cart->id,
-                'qty' => $cart->qty
+                'qty' => $cart->qty,
+                'weight' => $cart->weight
             ]);
         }
         return redirect('order');
     }
-    public function cart_increase($id, $qty)
+    public function weight_increase($id)
     { 
+        $request = request();
+        $item = Cart::get($id);
+        //dd($item->options->total);
+        $weight = $item->weight($item->weight);
+        Cart::update($id, [
+            'weight'  => $weight + 0.5
+        ]);
+
+        return redirect('cart');
+    }
+    public function weight_reduce($id)
+    { 
+        $request = request();
+        $item = Cart::get($id);
+        $weight = $item->weight($item->weight);
+        Cart::update($id, [
+            'weight'  => $weight - 0.5
+        ]);
+
+        return redirect('cart');
+    }
+    public function quantity_increase($id, $qty)
+    {
         Cart::update($id, $qty + 1);
         return redirect('cart');
     }
-    public function cart_reduce($id, $qty)
+    public function quantity_reduce($id, $qty)
     {
         Cart::update($id, $qty - 1);
         return redirect('cart');

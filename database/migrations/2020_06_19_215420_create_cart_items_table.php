@@ -18,7 +18,8 @@ class CreateCartItemsTable extends Migration
             $table->bigInteger('user_id');
             $table->bigInteger('product_id');
             $table->string('row_id');
-            $table->float('qty', 8,1);
+            $table->integer('qty');
+            $table->float('weight', 8,1);
             $table->timestamps();
         });
     }

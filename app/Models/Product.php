@@ -9,7 +9,7 @@ class Product extends Model
 	protected $uploads = '/images/products/';
 
     protected $fillable = [
-    	'cat_id', 'title', 'description', 'price', 'visibility', 'image'
+    	'cat_id', 'title', 'description', 'price', 'visibility', 'quantity', 'image'
     ];
 
     public function category(){

@@ -69,6 +69,17 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
+                'quantity' => 0,
+                'image' => 'jabuke.png'
+            ],
+            [
+                'title' => 'Nesto Na Kom',
+                'cat_id' => 1,
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'price' => rand(20, 50),
+                'visibility' => 1,
+                'quantity' => 1,
                 'image' => 'jabuke.png'
             ],
             [
@@ -77,6 +88,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'jabuke.png'
             ],
             [
@@ -85,6 +97,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'jabuke.png'
             ],
             [
@@ -93,6 +106,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'jabuke.png'
             ],
             [
@@ -101,14 +115,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
-                'image' => 'jabuke.png'
-            ],
-            [
-                'title' => 'Jabuke',
-                'cat_id' => 1,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                'price' => rand(20, 50),
-                'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'jabuke.png'
             ],
             [
@@ -117,6 +124,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'kupus.png'
             ],
             [
@@ -125,6 +133,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'kupus.png'
             ],
             [
@@ -133,6 +142,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'kupus.png'
             ],
             [
@@ -141,6 +151,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'kupus.png'
             ],
             [
@@ -149,6 +160,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'kupus.png'
             ],
             [
@@ -157,6 +169,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'kupus.png'
             ],
             [
@@ -165,6 +178,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'gljive.png'
             ],
             [
@@ -173,6 +187,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'gljive.png'
             ],
             [
@@ -181,6 +196,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'gljive.png'
             ],
             [
@@ -189,6 +205,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'gljive.png'
             ],
             [
@@ -197,6 +214,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'gljive.png'
             ],
             [
@@ -205,6 +223,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'gljive.png'
             ],
             [
@@ -213,6 +232,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'mlecni.png'
             ],
             [
@@ -221,6 +241,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'mlecni.png'
             ],
             [
@@ -229,6 +250,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'mlecni.png'
             ],
             [
@@ -237,6 +259,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'mlecni.png'
             ],
             [
@@ -245,6 +268,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'mlecni.png'
             ],
             [
@@ -253,6 +277,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'mlecni.png'
             ],
             [
@@ -261,6 +286,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'meso.png'
             ],
             [
@@ -269,6 +295,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'meso.png'
             ],
             [
@@ -277,6 +304,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'meso.png'
             ],
             [
@@ -285,6 +313,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'meso.png'
             ],
             [
@@ -293,6 +322,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'meso.png'
             ],
             [
@@ -301,6 +331,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'meso.png'
             ],
             [
@@ -309,6 +340,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'zdrava.png'
             ],
             [
@@ -317,6 +349,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'zdrava.png'
             ],
             [
@@ -325,6 +358,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'zdrava.png'
             ],
             [
@@ -333,6 +367,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'zdrava.png'
             ],
             [
@@ -341,6 +376,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'zdrava.png'
             ],
             [
@@ -349,6 +385,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'zdrava.png'
             ],
             [
@@ -357,6 +394,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'dzem.png'
             ],
             [
@@ -365,6 +403,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'dzem.png'
             ],
             [
@@ -373,6 +412,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'dzem.png'
             ],
             [
@@ -381,6 +421,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'dzem.png'
             ],
             [
@@ -389,6 +430,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'dzem.png'
             ],
             [
@@ -397,6 +439,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
                 'image' => 'dzem.png'
             ]
             

@@ -10,13 +10,13 @@
 					    <tr>
 					      	<th scope="col">
 						      	<a href="{{ route('product') }}">
-						      		<i class="fas fa-undo-alt xLeft"></i>
+						      		<i id="backToPrev" class="fas fa-undo-alt xLeft"></i>
 						      	</a>
 					      	</th>
 					      	<th scope="col">Slika</th>
 					      	<th scope="col">Proizvod</th>
 					      	<th scope="col">Cena</th>
-					      	<th scope="col">Kolicina</th>
+					      	<th scope="col">Tezina / Kolicina</th>
 					      	<th scope="col">Ukupno</th>
 					    </tr>
 					</thead>
@@ -36,19 +36,39 @@
 				      	<td>{{ $product->name }}</td>
 				      	<td>{{ $product->price }}</td>
 				      	<td>
-                            <a href="{{ route('cart.reduce', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
+						@if($product->options->quantity)	
+                            <a href="{{ route('quantity.reduce', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
 				      			<i class="fa fa-minus-circle" aria-hidden="true"></i>
 				      		</a>
 				      		<input type="hidden" name="qty[]" value="{{ $product->qty }}">
 				      		<span class="qty">
-				      			{{ $product->qty }}	
-				      		</span>
-                            <a href="{{ route('cart.increase', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
+							{{ $product->qty }}
+				     		</span>
+                            <a href="{{ route('quantity.increase', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
 				      			<i class="fa fa-plus-circle" aria-hidden="true"></i>
 				      		</a>
+						@else
+                            <a href="{{ route('weight.reduce', ['id' => $product->rowId, 'weight' => $product->weight]) }}">
+				      			<i class="fa fa-minus-circle" aria-hidden="true"></i>
+				      		</a>
+				      		<input type="hidden" name="weight[]" value="{{ $product->weight }}">
+				      		<span class="qty">
+							{{ $product->weight }}
+				     		</span>
+                            <a href="{{ route('weight.increase', ['id' => $product->rowId, 'weight' => $product->weight]) }}">
+				      			<i class="fa fa-plus-circle" aria-hidden="true"></i>
+				      		</a> 
+						@endif
 				      	</td>
-				      	<td>{{ $product->subtotal }} RSD</td>
+				      	<td>
+						@if($product->options->quantity)
+							{{ $qty = $product->price * $product->qty }} RSD
+						@else
+							{{ $weight = Cart::weight() * $product->price }} RSD
+						@endif
+				      	</td>
 				    </tr>
+
 					@endforeach
 					    <tr>
 					      	<th scope="row">
@@ -60,7 +80,9 @@
 					      	<td></td>
 					      	<td>
 					      		<span>
-					      			{{ Cart::subtotal() }} RSD
+									@if(isset($qty) && isset($weight))
+										{{ $qty + $weight }} RSD 
+									@endif	
 					      		</span>   
 					      	</td>
 					    </tr>
@@ -81,5 +103,8 @@
 @section('script')
 <script>
 	$("#cart").show(500)
+	$("#backToPrev").click(function(){
+		$("#cart").hide(350)
+	})
 </script>
 @endsection

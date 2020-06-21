@@ -20,7 +20,8 @@ class CreateProductsTable extends Migration
             $table->integer('cat_id');
             $table->text('description');
             $table->bigInteger('price');
-            $table->integer('visibility')->default(0);
+            $table->boolean('visibility')->default(1);
+            $table->boolean('quantity')->default(0);
             $table->string('image');
             $table->timestamps();
         });
