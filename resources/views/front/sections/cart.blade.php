@@ -21,7 +21,14 @@
 					    </tr>
 					</thead>
 					<tbody>
+					@php
+						$qty = 0;
+						$weight = 0;
+						$total = 0;
+					@endphp
+					
 					@foreach(Cart::content() as $product)
+						
 					<tr>
 				      	<th scope="row">
 				      		<a href="{{ route('cart.delete', ['id' => $product->rowId]) }}">
@@ -34,7 +41,7 @@
 							</a>
 				      	</td>
 				      	<td>{{ $product->name }}</td>
-				      	<td>{{ $product->price }}</td>
+				      	<td>{{ $product->price }}</td> 
 				      	<td>
 						@if($product->options->quantity)	
                             <a href="{{ route('quantity.reduce', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
@@ -62,9 +69,11 @@
 				      	</td>
 				      	<td>
 						@if($product->options->quantity)
-							{{ $qty = $product->price * $product->qty }} RSD
+							<p style="display: none;">Total {{ $total += $product->qty * $product->price }}</p>
+							<p style="display: none;">Pojedinacno </p>{{ $product->qty * $product->price  }} RSD
 						@else
-							{{ $weight = Cart::weight() * $product->price }} RSD
+							<p style="display: none;">Total {{ $total +=  $product->weight * $product->price  }} </p>
+							<p style="display: none;">Pojedinacno </p>{{ $product->weight * $product->price }} RSD
 						@endif
 				      	</td>
 				    </tr>
@@ -80,9 +89,10 @@
 					      	<td></td>
 					      	<td>
 					      		<span>
-									@if(isset($qty) && isset($weight))
-										{{ $qty + $weight }} RSD 
-									@endif	
+							
+									
+										{{ $total }} RSD 
+										
 					      		</span>   
 					      	</td>
 					    </tr>
@@ -102,9 +112,9 @@
 @endsection
 @section('script')
 <script>
-	$("#cart").show(500)
+	$("#cart").show(750)
 	$("#backToPrev").click(function(){
-		$("#cart").hide(350)
+		$("#cart").hide(500)
 	})
 </script>
 @endsection

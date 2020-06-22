@@ -19,7 +19,7 @@
 					</h2>
 				</div>	
 				 <div class="ml-auto mr-3">
-				<a href="#" class="btn btn-success float-right">
+				<a href="{{ route('cart') }}" class="btn btn-success float-right">
 					KORPA
 					<span class="count">{{ Cart::content()->count() }}</span>
 				</a>
@@ -68,7 +68,7 @@
 		</div>
 	</div>
 </section>
-<section id="cart"	class="cart">
+<!-- <section id="cart"	class="cart">
 	<form action="{{ route('cart.create') }}" method="post">
 	{{ csrf_field() }}
 		<div class="container">
@@ -166,7 +166,7 @@
 			</div>
 		</div>
 	</form>	
-</section>
+</section> -->
 @endsection
 @section('script')
 <script>
@@ -193,13 +193,12 @@
 		    });
 		}); 
 		$(".btn-success").click(function (){
-			$("#category").hide()
-			$("#cart").show(500) 
+			$("#category").hide(500)
 		})
-		$("#backToPrev").click(function(){
-			$("#cart").hide()
-			$("#category").show()
-		})
+		// $("#backToPrev").click(function(){
+		// 	$("#cart").hide()
+		// 	$("#category").show()
+		// })
 	});
 </script>
 @endsection
