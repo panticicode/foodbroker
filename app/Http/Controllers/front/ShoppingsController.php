@@ -1,34 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Cart;
 use App\Models\Product;
-use App\Models\Category;
-use App\Models\CartItem;
 
-class ShoppingController extends Controller
+class ShoppingsController extends Controller
 {
-    public function product()
-    {
-        $categories = Category::all();
-        $products = Product::all();
-        $defaults = Product::where('cat_id', 1)->get();
-
-        return view('front/sections/product', [
-            'categories' => $categories,
-            'products' => $products,
-            'defaults' => $defaults
-        ]); 
-    }
     public function cart()
     {
         return view('front/sections/cart');
-    }
-    public function order()
-    {
-        return view('front/sections/order');
     }
     public function cart_add($id)
     {
@@ -68,31 +51,11 @@ class ShoppingController extends Controller
                 'quantity' => $request->quantity
             ]
         ]);
-        // $carts = CartItem::create([
-        //     'row_id' => $cartItem->rowId,
-        //     'user_id' => 1,
-        //     'qty' => $request->qty,
-        //     'weight' => $request->weight
-        // ]);
-
+        
         Cart::associate($cartItem->rowId, 'App\Models\Product');
 
         return redirect('product');
        
-    }
-    public function cart_create()
-    {
-        foreach(Cart::content() as $cart)
-        {
-            CartItem::create([
-                'row_id' => $cart->rowId,
-                'user_id' => 3,
-                'product_id' => $cart->id,
-                'qty' => $cart->qty,
-                'weight' => $cart->weight
-            ]);
-        }
-        return redirect('order');
     }
     public function weight_increase($id)
     { 

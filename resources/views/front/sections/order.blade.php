@@ -6,7 +6,7 @@
 			<a href="{{ route('cart') }}">
 				<i id="backToPrev" class="fas fa-undo-alt float-left"></i>
 			</a>
-			Detalji Porudzbine
+			Detalji Porudžbine
 		</h2>
 		<form class="mb-3">
 		    <div class="form-row">

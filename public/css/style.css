@@ -1,6 +1,14 @@
 .navbar-light .navbar-nav .nav-link {
     color: #fff;
 }
+nav h3 a {
+  text-decoration: none!important;
+  color:#f7f7f7;
+  font-weight:800
+}
+nav h3 a:hover {
+  color: #f7f7f7;
+}
 .bg-light {
     background-color: #E73227!important;
     border-bottom: 5px solid #fff;
@@ -30,7 +38,19 @@ img {
     width: 100%;
     
 }
-
+#home p a{
+  text-decoration: none;
+  color:#e73227;
+  font-weight:400
+}
+#home p.passwordField a{
+  color:#ded2de;
+  font-weight:600
+}
+#home p.passwordField a:hover{
+  color:#e73227;
+  font-weight:700
+}
 #category {
     display:none;
 }
@@ -56,8 +76,8 @@ img {
     position: absolute;
     right: -10px;
     top: -12px;
-    width: 2.9vh;
-    height: 2.7vh;
+    width: 2.6vh;
+    height: 2.6vh;
     line-height: 20px;
     font-size: 14px;
     font-weight: 700;
@@ -219,6 +239,75 @@ hr{
     background-color: #60bfc1;
     border: 1px solid #e73227;
 }
+/**Login & Register**/
+#login .card,
+#register .card{
+  border-radius: 25px;
+}
+#login h4,
+#register h4 {
+  font-size: 25px;
+  font-weight:700;
+}
+#register label {
+  float:left;
+  font-weight:700;
+  
+}
+#login input,
+#register input,
+#register select {
+  background-color: #458f91;
+  color: #fefced;
+}
+#login ::placeholder,
+#register ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fefced!important;
+  opacity: 1; /* Firefox */
+  font-size: 18px;
+}
+
+#login :-ms-input-placeholder,
+#register :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #fefced!important;
+   font-size: 18px;
+}
+
+#login ::-ms-input-placeholder,
+#register ::-ms-input-placeholder { /* Microsoft Edge */
+   color: #fefced!important;
+   font-size: 18px;
+}
+#login .btn,
+#register .btn,
+#home .btn  {
+  color: #fff;
+  background-color:#e73227;
+  border-radius: 7px;
+  font-size: 18px;
+
+}
+#register p,
+#login p {
+  color: #e73227;
+  font-size: 14px;
+  font-weight:700;
+  float: left;
+}
+#register .promeni {
+  color: #e73227;
+  font-size: 14px;
+  font-weight:700;
+  float: left;
+  margin: 7px 0
+}
+/**Captcha**/
+#register img {
+  float:left;
+  height: 100px;
+}
+/**Captcha**/
+/**Login**/
 @media (min-width: 1200px){
   .bordered {
       padding: 7px!important
@@ -227,6 +316,16 @@ hr{
       margin-top: 7px;
       width:6vw;
   }
+}
+/**Logout**/
+i.fa-power-off {
+  font-size: 25px;
+}
+/**Profile**/
+#profile-link {
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight:700
 }
 @media (min-width: 992px) and (max-width: 1199px){
     .bordered {
@@ -343,6 +442,13 @@ hr{
       top: 33px!important;
     }
 }
+/**Logo Nav**/
+@media (min-width: 576px) {
+    nav h3 {
+      margin-left: 140px;
+    }
+}
+/**Logo Nav**/
 @media (min-width: 576px) and (max-width: 767px){
     .bordered {
        padding: 0 6px !important
@@ -383,8 +489,8 @@ hr{
     #navbarNav ul li {
         margin: auto;
     }
-    .navbar-nav .lead{
-        margin: 10px auto;
+    .navbar-nav h3{
+        text-align:center;
     }
     img{
         width: 10vh;
@@ -696,9 +802,6 @@ and (max-device-width: 1024px) {
       font-weight:600;
    }
 }
-
-
-  
 #cat-product {
   display: none;
 }  
