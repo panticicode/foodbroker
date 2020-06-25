@@ -34,6 +34,13 @@ Route::group(['namespace' => 'Front'], function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile', 'HomeController@index')->name('profile');
 Route::post('/profile/update/{id}', 'HomeController@update')->name('profile.update');
 
+Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard'], function() {
+	Route::resource('/', 'AdminController');
+	Route::resource('/foodbroker', 'FoodBrokerController');
+	Route::resource('/users', 'UsersController');
+	Route::resource('/products', 'ProductsController');
+	Route::resource('/categories', 'CategoriesController');
+});

@@ -15,8 +15,4 @@ class Category extends Model
     public function getImage($photo){
 		return $this->uploads . $photo;
 	}
-
-    public function products(){
-		return $this->hasmany('App\Models\Product');
-	}
 }

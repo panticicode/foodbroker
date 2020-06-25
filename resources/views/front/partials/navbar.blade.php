@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<nav id="navbar" class="navbar navbar-expand-sm navbar-light bg-light">
 	<a class="navbar-brand" href="#"></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
@@ -13,13 +13,13 @@
         @if(Auth::user())
             <div class="navbar-nav pt-3 mr-5">
                 <h3 class="display-5 mr-5">
-                    <a href="{{ url('/') }}">KOMSIJAVIP</a>
+                    <a href="{{ route('index') }}">KOMSIJAVIP</a>
                 </h3>
             </div>
         @else
             <div class="navbar-nav pt-3">
                 <h3 class="display-5">
-                    <a href="{{ url('/') }}">KOMSIJAVIP</a>
+                    <a href="{{ route('index') }}">KOMSIJAVIP</a>
                 </h3>
             </div>
         @endif
@@ -39,7 +39,7 @@
             	    </li>
                 @else
                     <li class="nav-item">
-                        <a id="profile-link" href="{{ route('home') }}" class="nav-link">
+                        <a id="profile-link" href="{{ route('profile') }}" class="nav-link">
                             {{ __('Profil') }}
                         </a>
                     </li>    

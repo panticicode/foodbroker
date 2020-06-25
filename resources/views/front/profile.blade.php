@@ -40,7 +40,7 @@
                                     <label for="cardId">
                                         BROJ LIČNE KARTE(OPCIONALNO)
                                     </label>
-                                    <input id="cardId" type="text" class="form-control" name="cardId" value="{{ empty($user) ? old('name') : $user->cardId }}" autocomplete="cardId" autofocus>
+                                    <input id="cardId" type="text" class="form-control" name="cardId" value="{{ empty($user) ? old('cardId') : $user->cardId }}" autocomplete="cardId" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <label for="municipality">
@@ -48,7 +48,7 @@
                                     </label>
                                     <select class="form-control" id="municipality" name="municipality">
                                         <option value="" selected="" disabled="">
-                                            Izaberite opštinu
+                                            {{ $user->municipality }}
                                         </option>
                                     @foreach($municipalities as $municipality)
                                         <option value="{{ $municipality->name }}">
@@ -68,7 +68,7 @@
                                     <label for="address">
                                         ADRESA I BROJ STANA:
                                     </label>
-                                    <input type="text" class="form-control" id="address" name="address" value="{{ empty($user) ? old('name') : $user->address }}" autocomplete="address" autofocus>
+                                    <input type="text" class="form-control" id="address" name="address" value="{{ empty($user) ? old('address') : $user->address }}">
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="email">EMAIL</label>
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ empty($user) ? old('name') : $user->email }}" required autocomplete="email">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ empty($user) ? old('email') : $user->email }}" required autocomplete="email">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -88,7 +88,7 @@
                                     <label for="phone">
                                         BROJ TELEFONA:
                                     </label>
-                                    <input type="text" class="form-control" id="phone" name="phone" value="{{ empty($user) ? old('name') : $user->phone }}" autocomplete="phone" autofocus>
+                                    <input type="text" class="form-control" id="phone" name="phone" value="{{ empty($user) ? old('phone') : $user->phone }}" autocomplete="phone" autofocus>
                                     @error('phone')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

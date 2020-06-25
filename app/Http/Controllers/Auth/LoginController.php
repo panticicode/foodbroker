@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    //protected $redirectTo = '/';
+    
 
     /**
      * Create a new controller instance.
@@ -35,5 +38,23 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    /**
+    * CUSTOM OVERRIDE REDIRECT
+    **/
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->isAdmin()) 
+        {
+            session()->flash('success', 'Dobro dosli Admin');
+            return redirect()->route('index');
+        }
+        if ($user->isFoodBroker()) 
+        {
+            session()->flash('success', 'Dobro dosli Foodbroker');
+            return redirect()->route('foodbroker.index');
+        }
+        session()->flash('danger', 'Uneli ste pogrešne podatke, pokušajte ponovo!');
+        return redirect('/login');
     }
 }

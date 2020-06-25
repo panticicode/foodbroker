@@ -25,9 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user()->first();
+        $user = Auth::user();
         $municipalities = Municipality::all();
-        return view('home', [
+        return view('front/profile', [
             'municipalities' => $municipalities,
             'user' => $user
         ]);
@@ -45,7 +45,7 @@ class HomeController extends Controller
         }
         $user->update($params);
 
-        session()->flash('success', 'Congratulations! Your Member has been updated');
+        session()->flash('success', 'Uspešno ste ažurirali Vas profil');
 
         return redirect()->back();
     }

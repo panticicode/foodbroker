@@ -15,54 +15,6 @@ class ProductSeeder extends Seeder
         Product::truncate();
 
         $products = [
-            // [
-            //     'title' => 'Banane',
-            //     'cat_id' => 1,
-            //     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-            //     'price' => rand(20, 50),
-            //     'visibility' => 1,
-            //     'image' => 'banane.png'
-            // ],
-            // [
-            //     'title' => 'Jabuke',
-            //     'cat_id' => 1,
-            //     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-            //     'price' => rand(20, 50),
-            //     'visibility' => 1,
-            //     'image' => 'jabuke.png'
-            // ],
-            // [
-            //     'title' => 'Pomorandze',
-            //     'cat_id' => 1,
-            //     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-            //     'price' => rand(20, 50),
-            //     'visibility' => 1,
-            //     'image' => 'pomorandze.png'
-            // ],
-            // [
-            //     'title' => 'Tresnje',
-            //     'cat_id' => 1,
-            //     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-            //     'price' => rand(20, 50),
-            //     'visibility' => 1,
-            //     'image' => 'tresnje.png'
-            // ],
-            // [
-            //     'title' => 'Grozdje',
-            //     'cat_id' => 1,
-            //     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-            //     'price' => rand(20, 50),
-            //     'visibility' => 1,
-            //     'image' => 'grozdje.png'
-            // ],
-            // [
-            //     'title' => 'Limun',
-            //     'cat_id' => 1,
-            //     'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-            //     'price' => rand(20, 50),
-            //     'visibility' => 1,
-            //     'image' => 'limun.png'
-            // ]
             [
                 'title' => 'Jabuke',
                 'cat_id' => 1,
@@ -444,6 +396,62 @@ class ProductSeeder extends Seeder
             ]
             
         ];
+        // $products = [
+        //     [
+        //         'title' => 'Jabuke',
+        //         'cat_id' => 1,
+        //         'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        //         'price' => rand(20, 50),
+        //         'visibility' => 1,
+        //         'quantity' => 0,
+        //         'image' => 'jabuke.png'
+        //     ],
+        //     [
+        //         'title' => 'Kupus',
+        //         'cat_id' => 2,
+        //         'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        //         'price' => rand(20, 50),
+        //         'visibility' => 1,
+        //         'quantity' => 0,
+        //         'image' => 'kupus.png'
+        //     ],
+        //     [
+        //         'title' => 'Sampinjoni',
+        //         'cat_id' => 3,
+        //         'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        //         'price' => rand(20, 50),
+        //         'visibility' => 1,
+        //         'quantity' => 0,
+        //         'image' => 'gljive.png'
+        //     ],
+        //     [
+        //         'title' => 'Juneci but',
+        //         'cat_id' => 4,
+        //         'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        //         'price' => rand(20, 50),
+        //         'visibility' => 1,
+        //         'quantity' => 0,
+        //         'image' => 'meso.png'
+        //     ],
+        //     [
+        //         'title' => 'Domaci Dzem',
+        //         'cat_id' => 5,
+        //         'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        //         'price' => rand(20, 50),
+        //         'visibility' => 1,
+        //         'quantity' => 1,
+        //         'image' => 'dzem.png'
+        //     ],
+        //     [
+        //         'title' => 'Ajvar',
+        //         'cat_id' => 6,
+        //         'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        //         'price' => rand(20, 50),
+        //         'visibility' => 1,
+        //         'quantity' => 1,
+        //         'image' => 'domaci.png'
+        //     ],
+        // ];
         foreach ($products as $product) 
         {
             Product::create($product);

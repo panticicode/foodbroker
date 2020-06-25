@@ -9,9 +9,12 @@ nav h3 a {
 nav h3 a:hover {
   color: #f7f7f7;
 }
-.bg-light {
+#navbar {
     background-color: #E73227!important;
     border-bottom: 5px solid #fff;
+}
+.sidebar-sticky {
+    background-color: rgb(239, 235, 235);
 }
 main {
     background: #60bfc1;
@@ -176,7 +179,7 @@ hr{
     font-size: 25px;
     color: #e73227;
 }
-.table i {
+#cart .table i {
     font-size: 25px;
     color: #828990;
 }
@@ -490,6 +493,9 @@ i.fa-power-off {
         margin: auto;
     }
     .navbar-nav h3{
+        text-align:center;
+    }
+    .navbar-brand h5{
         text-align:center;
     }
     img{
@@ -807,4 +813,11 @@ and (max-device-width: 1024px) {
 }  
 .cat-product {
   display:block!important;
+}
+#privileges {
+  height: 80vh
+}
+#privileges h1 {
+  color: #5a5a5a;
+  font-weight:400
 }

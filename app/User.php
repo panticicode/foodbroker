@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'cardId', 'municipality', 'address', 'email', 'phone', 'password',
+        'name', 'role_id', 'cardId', 'municipality', 'address', 'email', 'phone', 'password',
     ];
 
     /**
@@ -27,7 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    public function role(){
+        return $this->belongsTo('App\Models\Role');
+    }
     /**
      * The attributes that should be cast to native types.
      *
@@ -36,4 +38,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /**
+    * Methods for check user role
+    **/
+    public function isAdmin()
+    {
+        if($this->role ? $this->role->name == "admin" : false)
+        {
+            return true;
+        }
+        return false;
+    }
+    public function isFoodBroker()
+    {
+        if($this->role ? $this->role->name == "foodbroker" : false)
+        {
+            return true;
+        }
+        return false;
+    }
 }

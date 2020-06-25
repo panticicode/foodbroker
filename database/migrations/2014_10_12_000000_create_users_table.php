@@ -17,11 +17,12 @@ class CreateUsersTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('cardId')->nullable();
-            $table->string('municipality');
-            $table->string('address');
+            $table->integer('role_id');
+            $table->string('cardId')->nullable();
+            $table->string('municipality')->nullable();
+            $table->string('address')->nullable();
             $table->string('email')->unique();
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
