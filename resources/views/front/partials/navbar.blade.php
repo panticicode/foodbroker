@@ -42,7 +42,21 @@
                         <a id="profile-link" href="{{ route('profile') }}" class="nav-link">
                             {{ __('Profil') }}
                         </a>
-                    </li>    
+                    </li>  
+                    @if(Auth::user()->isAdmin())
+                    <li class="nav-item">
+                        <a id="profile-link" href="{{ route('index') }}" class="nav-link">
+                            {{ __('Dashboard') }}
+                        </a>
+                    </li>
+                    @endif
+                    @if(Auth::user()->isFoodBroker())
+                    <li class="nav-item">
+                        <a id="profile-link" href="{{ route('foodbroker.index') }}" class="nav-link">
+                            {{ __('Dashboard') }}
+                        </a>
+                    </li>
+                    @endif  
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
                            onclick="event.preventDefault();

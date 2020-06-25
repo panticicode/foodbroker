@@ -26,22 +26,22 @@ class ProductSeeder extends Seeder
                 'image' => 'jabuke.png'
             ],
             [
-                'title' => 'Nesto Na Kom',
+                'title' => 'Ananas Konzervka',
                 'cat_id' => 1,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
-                'visibility' => 1,
+                'visibility' => 0,
                 'quantity' => 1,
                 'image' => 'jabuke.png'
             ],
             [
-                'title' => 'Jabuke',
+                'title' => 'Pomorandze',
                 'cat_id' => 1,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
-                'visibility' => 1,
+                'visibility' => 0,
                 'quantity' => 0,
-                'image' => 'jabuke.png'
+                'image' => 'pomorandze.png'
             ],
             [
                 'title' => 'Jabuke',
@@ -53,13 +53,13 @@ class ProductSeeder extends Seeder
                 'image' => 'jabuke.png'
             ],
             [
-                'title' => 'Jabuke',
+                'title' => 'Neko Voce na Kom',
                 'cat_id' => 1,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
-                'visibility' => 1,
-                'quantity' => 0,
-                'image' => 'jabuke.png'
+                'visibility' => 0,
+                'quantity' => 1,
+                'image' => 'dzem.png'
             ],
             [
                 'title' => 'Jabuke',

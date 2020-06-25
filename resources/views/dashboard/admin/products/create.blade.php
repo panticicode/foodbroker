@@ -85,12 +85,13 @@
 							</div>
 					    </div>
 						<div class="form-group row">
-							<div class="col-md-3">
-								{{ __(strtoupper('Vidljivost')) }}
+							<div class="col-md-1"></div>
+							<div class="col-md-1">
+								{{ __(strtoupper('STOCK')) }}
 							</div>	
-							<div class="col-md-3">
-								<div class="custom-control custom-checkbox custom-control-inline">
-								    <input type="checkbox" name="visibility" class="custom-control-input {{ $errors->has('visibility') ? 'is-invalid' : '' }}" id="visibility" value="DA">
+							<div class="col-md-5">
+								<div class="custom-control custom-checkbox custom-control-inline" style="position: absolute;">
+								    <input type="checkbox" name="visibility" class="custom-control-input {{ $errors->has('visibility') ? 'is-invalid' : '' }}" id="visibility" value="IN STOCK" style="position: relative;">
 								    <label class="custom-control-label" for="visibility">
 								    	<div id="visibility-value"></div>
 								    </label>
@@ -101,12 +102,12 @@
 					                @endif
 								</div>
 							</div>
-							<div class="col-md-3">
-								{{ __(strtoupper('KOLIČINA')) }}
+							<div class="col-md-2">
+								{{ __(strtoupper('Tip proizvoda')) }}
 							</div>
-							<div class="col-md-3">
-								<div class="custom-control custom-checkbox custom-control-inline">
-								    <input type="checkbox" name="productType" class="custom-control-input {{ $errors->has('productType') ? 'is-invalid' : '' }}" id="productType" value="KG">
+							<div class="col-md-2">
+								<div class="custom-control custom-checkbox custom-control-inline" style="position: absolute;">
+								    <input type="checkbox" name="productType" class="custom-control-input {{ $errors->has('productType') ? 'is-invalid' : '' }}" id="productType" value="KG" style="position: relative;">
 								    <label class="custom-control-label" for="productType">
 								    	<div id="productType-value"></div>
 								    </label>
@@ -151,16 +152,17 @@
 @endsection
 @section('script')
 <script>
-$('#visibility-value').text($('#visibility').val())
-$('#productType-value').text($('#productType').val())
+$(() => {
+	$('#visibility-value').text($('#visibility').val())
+	$('#productType-value').text($('#productType').val())
 	$("#visibility").on('change', (evt) => {
 	  	if($(evt.currentTarget).is(':checked')) 
 	  	{
-			$(evt.currentTarget).attr('value', 'NE')
+			$(evt.currentTarget).attr('value', 'OUT OF STOCK')
 		} 
 		else
 		{
-	    	$(evt.currentTarget).attr('value', 'DA')
+	    	$(evt.currentTarget).attr('value', 'IN STOCK')
 	  	}
 	  	$('#visibility-value').text($('#visibility').val())
 	})
@@ -175,5 +177,6 @@ $('#productType-value').text($('#productType').val())
 	  	}
 	  	$('#productType-value').text($('#productType').val())
 	})	
+})
 </script>
 @endsection

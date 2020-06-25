@@ -60,22 +60,26 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'category' => 'required',
-            'image' => 'required|image'
-        ]);
+        if(Auth::user()->isAdmin())
+        {  
+            $this->validate($request, [
+                'category' => 'required',
+                'image' => 'required|image'
+            ]);
 
-        $image = $request->image;
-        $imageNewName = time(). $image->getClientOriginalName();
-        $image_path = 'images/categories/';
-        $image->move($image_path, $imageNewName);
+            $image = $request->image;
+            $imageNewName = time(). $image->getClientOriginalName();
+            $image_path = 'images/categories/';
+            $image->move($image_path, $imageNewName);
 
-        $category = new Category;
-        $category->title = $request->category;
-        $category->image = $imageNewName;
-        $category->save();
-        Session::flash('success', 'Uspešno ste kreirali novu kategoriju');
-        return redirect()->route('categories.index');
+            $category = new Category;
+            $category->title = $request->category;
+            $category->image = $imageNewName;
+            $category->save();
+            Session::flash('success', 'Uspešno ste kreirali novu kategoriju');
+            return redirect()->route('categories.index');
+        }
+        return view('privileges');
     }
 
     /**
@@ -111,22 +115,26 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $this->validate($request, [
-            'category' => 'required' 
-        ]);
-        if($request->hasFile('image')):
-            $image = $request->image;
-            $image_path = 'images/categories/';
-            $imageNewName = time() . $image->getClientOriginalName();
-            $image->move($image_path, $imageNewName);
-            $category->image = $imageNewName;
-        endif; 
+        if(Auth::user()->isAdmin())
+        {
+            $this->validate($request, [
+                'category' => 'required' 
+            ]);
+            if($request->hasFile('image')):
+                $image = $request->image;
+                $image_path = 'images/categories/';
+                $imageNewName = time() . $image->getClientOriginalName();
+                $image->move($image_path, $imageNewName);
+                $category->image = $imageNewName;
+            endif; 
 
-        $category->title = $request->category;
-        
-        $category->save();
-        Session::flash('success', 'Kategorija je uspešno ažurirana');
-        return redirect()->route('categories.index');
+            $category->title = $request->category;
+            
+            $category->save();
+            Session::flash('success', 'Kategorija je uspešno ažurirana');
+            return redirect()->route('categories.index');
+        }
+        return view('privileges');
     }
 
     /**
@@ -137,22 +145,26 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
-        if(!empty($category->image))
-        { 
-           $image_path = 'images/categories/'; 
-           if(file_exists($image_path . $category->image))
-           {
-                unlink($image_path . $category->image); 
-           }
-           
-           if($category->image !== NULL)
-           { 
+        if(Auth::user()->isAdmin())
+        {
+            if(!empty($category->image))
+            { 
+               $image_path = 'images/categories/'; 
+               if(file_exists($image_path . $category->image))
+               {
+                    unlink($image_path . $category->image); 
+               }
+               
+               if($category->image !== NULL)
+               { 
+                    $category->delete();
+               }
+            }else{ 
                 $category->delete();
-           }
-        }else{ 
-            $category->delete();
-        } 
-        session()->flash('success', 'Kategorija je uspešno obrisana');
-        return redirect(route('categories.index'));
+            } 
+            session()->flash('success', 'Kategorija je uspešno obrisana');
+            return redirect(route('categories.index'));
+        }
+        return view('privileges');
     }
 }

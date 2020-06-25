@@ -36,7 +36,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $params = $request->only(
-            'name', 'cardId', 'municipality', 'address', 'email', 'phone',
+            'name', 'cardId', 'municipality', 'address', 'email', 'phone'
         );
         if(!empty($request->password))
         {

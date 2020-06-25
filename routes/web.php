@@ -38,9 +38,14 @@ Route::get('/profile', 'HomeController@index')->name('profile');
 Route::post('/profile/update/{id}', 'HomeController@update')->name('profile.update');
 
 Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard'], function() {
+	/**ADMIN ROUTES**/
 	Route::resource('/', 'AdminController');
-	Route::resource('/foodbroker', 'FoodBrokerController');
 	Route::resource('/users', 'UsersController');
 	Route::resource('/products', 'ProductsController');
 	Route::resource('/categories', 'CategoriesController');
+	/**FOODBROKER ROUTES**/
+	Route::get('foodbroker/products', 'FoodBrokerController@products')->name('products');
+	Route::put('foodbroker/product/update/{id}', 'FoodBrokerController@productUpdate')->name('foodbroker.product.update');
+	Route::get('foodbroker/product/stock/{id}', 'FoodBrokerController@stock')->name('foodbroker.product.stock');
+	Route::resource('foodbroker', 'FoodBrokerController');
 });

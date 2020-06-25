@@ -32,7 +32,9 @@
 						<img class="img-fluid" src="{{ $product->getImage($product->image) }}" style="max-width:50px">
 					</td>
 					<td>{{ $product->price }} RSD</td>
-					<td>{{ $product->getCount()->count() }}</td>
+					<td>
+						{{ $product->visibility ? 'DA' : 'NE' }}
+					</td>
 					<td>
 						<a href="{{ route('products.edit', $product) }}" class="btn btn-outline-success btn-sm rounded-3">
 							<i class="fas fa-edit"></i>

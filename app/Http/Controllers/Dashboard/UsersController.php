@@ -55,13 +55,17 @@ class UsersController extends Controller
      */
     public function store(Request $request, User $user)
     {
-        // dd($request->all());
-        $user->fill($request->all());
-        $user->password = \Hash::make($request->password);
-        $user->role_id = $request->role;
-        $user->save();
-        session()->flash('success', 'Novi korisnik je uspešno kreiran');
-        return redirect(route('users.index'));
+        if(Auth::user()->isAdmin())
+        {    
+            // dd($request->all());
+            $user->fill($request->all());
+            $user->password = \Hash::make($request->password);
+            $user->role_id = $request->role;
+            $user->save();
+            session()->flash('success', 'Novi korisnik je uspešno kreiran');
+            return redirect(route('users.index'));
+        }
+        return view('privileges');    
     }
 
     /**
@@ -101,21 +105,25 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $params = $request->only(
-            'name', 'role_id', 'email', 'phone',
-        );
-        if(!empty($request->password))
-        {
-            $request->validate([
-                'password' => 'required|string|min:3'
-            ]);
-            $user->password = \Hash::make($request->password);
-            session()->flash('success', 'Uspešno ste promenili lozinu');
+        if(Auth::user()->isAdmin())
+        {    
+            $params = $request->only(
+            'name', 'role_id', 'email', 'phone'
+            );
+            if(!empty($request->password))
+            {
+                $request->validate([
+                    'password' => 'required|string|min:3'
+                ]);
+                $user->password = \Hash::make($request->password);
+                session()->flash('success', 'Uspešno ste promenili lozinu');
+            }
+            // dd($request->all());  
+            $user->update($params);
+            session()->flash('success', 'Korisnik je uspešno ažuriran');
+            return redirect(route('users.index'));
         }
-        // dd($request->all());  
-        $user->update($params);
-        session()->flash('success', 'Korisnik je uspešno ažuriran');
-        return redirect(route('users.index'));
+        return view('privileges');
     }
 
     /**
@@ -126,8 +134,12 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
-        session()->flash('success', 'Korisnik je uspešno obrisan');
-        return redirect(route('users.index'));
+        if(Auth::user()->isAdmin())
+        {
+            $user->delete();
+            session()->flash('success', 'Korisnik je uspešno obrisan');
+            return redirect(route('users.index'));
+        }
+        return view('privileges');
     }
 }
