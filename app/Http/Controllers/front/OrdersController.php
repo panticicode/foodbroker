@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\Orders\SendEmail;
+use Illuminate\Support\Facades\Mail;
 use App\Models\CartItem;
 use App\Models\Country;
 use App\Models\Order;
@@ -69,8 +71,15 @@ class OrdersController extends Controller
             'email' => $request->email,
             'content' => $request->content
         ]);
-        Mail::bcc('panticicode@gmail.com')
-                                ->send(new SendSmsEmail($data));
+        $data = [
+        'email'   => 'panticicode@gmail.com',
+        'name'    => $order->firstname . " " . $order->lastname,
+        'subject' => 'Porudžbenica broj 8',
+        'content' =>  $order
+        ];
+        //dd($data['email']);
+        Mail::bcc($data['email'])
+                                ->send(new SendEmail($data));
         Session::flash('success', 'Uspešno ste poslavi Vašu porudžbenicu');
         return redirect('/');
     }
