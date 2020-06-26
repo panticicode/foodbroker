@@ -22,7 +22,6 @@ class ProductSeeder extends Seeder
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'quantity' => 0,
                 'image' => 'jabuke.png'
             ],
             [
@@ -30,7 +29,7 @@ class ProductSeeder extends Seeder
                 'cat_id' => 1,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
-                'visibility' => 0,
+                'visibility' => 1,
                 'quantity' => 1,
                 'image' => 'jabuke.png'
             ],

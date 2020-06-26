@@ -31,6 +31,7 @@ Route::group(['namespace' => 'Front'], function(){
 	Route::get('/cart/delete/{id}', 'ShoppingsController@cart_delete')->name('cart.delete');
 	Route::get('/order', 'OrdersController@index')->name('order');
 	Route::post('/order/store', 'OrdersController@order_store')->name('order.store');
+	// Route::get('/order/delete/cart', 'OrdersController@destroyCart')->name('destroy.cart');
 });
 
 Auth::routes();

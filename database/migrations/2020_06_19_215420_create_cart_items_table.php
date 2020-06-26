@@ -18,6 +18,8 @@ class CreateCartItemsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
             $table->bigInteger('product_id');
+            $table->string('name');
+            $table->bigInteger('price');
             $table->string('row_id');
             $table->integer('qty');
             $table->float('weight', 8,1);

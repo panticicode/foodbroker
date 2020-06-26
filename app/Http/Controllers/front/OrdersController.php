@@ -22,9 +22,11 @@ class OrdersController extends Controller
 
     public function index()
     {
+        $cartItems = CartItem::where('user_id', Auth::id())->get();
         $countries = Country::all();
         return view('front/sections/order', [
-            'countries' => $countries
+            'countries' => $countries,
+            'cartItems' => $cartItems
         ]);
     }
     public function cart_create()
@@ -35,6 +37,8 @@ class OrdersController extends Controller
                 'row_id' => $cart->rowId,
                 'user_id' => 3,
                 'product_id' => $cart->id,
+                'name' => $cart->name,
+                'price' => $cart->price,
                 'qty' => $cart->qty,
                 'weight' => $cart->weight
             ]);
@@ -43,6 +47,7 @@ class OrdersController extends Controller
     }
     public function order_store(Request $request)
     {
+        //dd($request->product);
         $this->validate($request, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
@@ -71,16 +76,28 @@ class OrdersController extends Controller
             'email' => $request->email,
             'content' => $request->content
         ]);
+
+        $cart = CartItem::where('user_id', Auth::id())->get();
+
         $data = [
-            'email'   => 'panticicode@gmail.com',
+            'email'   => 'panticicode@gmail.com',/**OVDE UBACI EMAIL**/
             'name'    => $order->firstname . " " . $order->lastname,
-            'subject' => 'Porudžbenica broj 8',
-            'content' =>  $order
+            'subject' => 'Porudžbenica broj' . " " . $order->id,
+            'content' =>  $order,
+            'cartData' => $cart,
         ];
-        //dd($data['email']);
-        Mail::bcc($data['email'])
-                                ->send(new SendEmail($data));
-        Session::flash('success', 'Uspešno ste poslavi Vašu porudžbenicu');
+        Mail::to($data['email'])->send(new SendEmail($data));
+
+        CartItem::whereIn('user_id', [Auth::id()])->delete();
+
+        Session::flash('success', 'Uspešno ste poslali Vašu porudžbenicu');
         return redirect('/');
     }
+    // public function destroyCart()
+    // {
+    //     $cart = CartItem::whereIn('user_id', [Auth::id()]);
+    //     $cart->delete();
+    //     Session::flash('success', 'Uspešno ste poslavi Vašu porudžbenicu');
+    //     return redirect('/');
+    // }
 }
