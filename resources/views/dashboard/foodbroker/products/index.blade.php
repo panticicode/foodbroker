@@ -57,7 +57,7 @@
 					{{ csrf_field() }}
 					{{ method_field('PUT') }}
 						<td id="priceOfProduct" style="position: relative;">
-							<input type="number" class="form-control" name="price" id="priceValue" value="{{ $product->price }}" style="width: 42%; position: absolute; top: 17px;">
+							<input type="number" class="form-control" name="price" id="priceValue" value="{{ $product->price }}" style="width: 42%; position: absolute; top: 17px; padding:0">
 							<span class="float-right ml-4">RSD</span>
 						</td>
 						<td>

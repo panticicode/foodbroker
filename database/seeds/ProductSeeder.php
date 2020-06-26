@@ -26,7 +26,7 @@ class ProductSeeder extends Seeder
                 'image' => 'jabuke.png'
             ],
             [
-                'title' => 'Ananas Konzervka',
+                'title' => 'Ananas',
                 'cat_id' => 1,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
@@ -53,7 +53,7 @@ class ProductSeeder extends Seeder
                 'image' => 'jabuke.png'
             ],
             [
-                'title' => 'Neko Voce na Kom',
+                'title' => 'Konzerva',
                 'cat_id' => 1,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
@@ -62,7 +62,7 @@ class ProductSeeder extends Seeder
                 'image' => 'dzem.png'
             ],
             [
-                'title' => 'Jabuke',
+                'title' => 'Kivi',
                 'cat_id' => 1,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),

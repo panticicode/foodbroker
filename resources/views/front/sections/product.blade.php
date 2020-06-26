@@ -30,12 +30,14 @@
 			<div class="row ml-1" data-counter="{{ $defaults }}">
 				@foreach($products as $product)
 				<div id="{{ $product->cat_id }}" class="col-4 content">
-					<div class="img-thumbnail">
+					<div class="img-thumbnail" data-stock="{{ $product->visibility }}">
 						<figure class="figure">
 				  			<img src="{{ $product->getImage($product->image) }}" class="figure-img img-fluid rounded-circle" alt="placeholder">
 						  	<figcaption class="figure-caption">
-						  		<h3>{{ $product->title }}</h3>	
-						  		<div class="row seek">
+						  		<h3 data-stock="{{ $product->visibility }}">
+								{{ $product->visibility ? $product->title : "OUT OF STOCK" }}
+						  		</h3>	
+						  		<div class="row seek" data-stock="{{ $product->visibility }}">
 									<form action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
 									{{ csrf_field() }}
 										<hr class="mt-4">
@@ -67,7 +69,9 @@
 			</div>
 		</div>
 	</div>
+	
 </section>
+
 <!-- <section id="cart"	class="cart">
 	<form action="{{ route('cart.create') }}" method="post">
 	{{ csrf_field() }}
@@ -167,6 +171,7 @@
 		</div>
 	</form>	
 </section> -->
+
 @endsection
 @section('script')
 <script>
@@ -199,6 +204,9 @@
 		// 	$("#cart").hide()
 		// 	$("#category").show()
 		// })
+
+		
 	});
 </script>
 @endsection
+

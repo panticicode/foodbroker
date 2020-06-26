@@ -30,6 +30,7 @@ Route::group(['namespace' => 'Front'], function(){
 	Route::get('/quantity/reduce/{id}/{qty}', 'ShoppingsController@quantity_reduce')->name('quantity.reduce');
 	Route::get('/cart/delete/{id}', 'ShoppingsController@cart_delete')->name('cart.delete');
 	Route::get('/order', 'OrdersController@index')->name('order');
+	Route::post('/order/store', 'OrdersController@order_store')->name('order.store');
 });
 
 Auth::routes();

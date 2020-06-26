@@ -16,10 +16,10 @@ class Product extends Model
     public function category(){
 		return $this->belongsTo('App\Models\Category', 'cat_id');
 	}
-	public function getCount()
-    {
-        return DB::table('products')->where('cat_id',$this->id);
-    }
+	// public function getCount()
+ //    {
+ //        return DB::table('products')->where('cat_id',$this->id);
+ //    }
 	public function getImage($photo){
 		return $this->uploads . $photo;
 	}

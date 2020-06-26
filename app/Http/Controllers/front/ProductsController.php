@@ -12,9 +12,11 @@ class ProductsController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $products = Product::where('visibility', true)->get();
-        $defaults = Product::where('cat_id', 1)
-                            ->where('visibility', true)->get();
+        $products = Product::all();
+        $defaults = Product::where('cat_id', 1)->get();
+        // $products = Product::where('visibility', true)->get();
+        // $defaults = Product::where('cat_id', 1)
+        //                     ->where('visibility', true)->get();
 
         return view('front/sections/product', [
             'categories' => $categories,

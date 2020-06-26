@@ -525,6 +525,10 @@ i.fa-power-off {
         float:left;
         left: -4px
     } 
+    #priceOfProduct span{
+      position:relative;
+      left: 15px
+    }
     
 }
 @media (min-width: 412px) and (max-width: 575px){
@@ -820,4 +824,34 @@ and (max-device-width: 1024px) {
 #privileges h1 {
   color: #5a5a5a;
   font-weight:400
+}
+/**STOCK**/
+.img-thumbnail[data-stock='0'] {
+  background: #b7aca8;
+  -webkit-cursor: zoom-in;
+  cursor: zoom-in;
+  opacity: 0.3;
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+h3[data-stock='0'] {
+   color: #020202;
+   font-size: 20px;
+   font-weight: 700;
+   text-transform: uppercase;
+   word-spacing: 3px;
+   display: inline-block;
+   -webkit-transform: rotate(-60deg);
+   transform: rotate(-60deg);
+   position: relative;
+   top: -65px;
+   left: 5px; 
+}
+.seek[data-stock='0']{
+    display: none!important;
+}
+/**STOCK**/
+#priceOfProduct span{
+  position:relative;
+  left: 15px
 }
