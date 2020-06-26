@@ -56,7 +56,7 @@
                     </span>
                 @enderror
 					@foreach($countries as $country)
-						<option value="{{ $country->id }}">
+						<option value="{{ $country->name }}">
 							{{ old('country', $country->name) }}
 						</option>
 					@endforeach

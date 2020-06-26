@@ -30,7 +30,7 @@ class SendEmail extends Mailable
     public function build()
     {
         return $this->from('noreply@foodbroker.rs', 'FoodBroker-Admin')
-            ->subject("Neki subjekat")
+            ->subject("Nova Porudžbenica")
             ->markdown('dashboard.email.send-waiting')
             ->with([
                 'name'    => $this->data['name'],

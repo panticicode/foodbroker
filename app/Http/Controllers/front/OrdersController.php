@@ -54,7 +54,7 @@ class OrdersController extends Controller
             'postal_code' => ['required', 'string', 'max:5'],
             'phone' => ['required', 'string', 'max:13'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
-        ]);  
+        ]);
         $order = Order::create([
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
@@ -72,10 +72,10 @@ class OrdersController extends Controller
             'content' => $request->content
         ]);
         $data = [
-        'email'   => 'panticicode@gmail.com',
-        'name'    => $order->firstname . " " . $order->lastname,
-        'subject' => 'Porudžbenica broj 8',
-        'content' =>  $order
+            'email'   => 'panticicode@gmail.com',
+            'name'    => $order->firstname . " " . $order->lastname,
+            'subject' => 'Porudžbenica broj 8',
+            'content' =>  $order
         ];
         //dd($data['email']);
         Mail::bcc($data['email'])

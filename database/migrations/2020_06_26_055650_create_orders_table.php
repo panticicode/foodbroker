@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('lastname');
             $table->integer('user_id');
             $table->string('company')->nullable();
-            $table->integer('country_id');
+            $table->string('country_id');
             $table->string('address');
             $table->string('apartment')->nullable();
             $table->date('delivery_date');
