@@ -33,7 +33,7 @@
                                         <label for="municipality">
                                             IZABERITE VASU OPŠTINU
                                         </label>
-                                        <select class="form-control" id="municipality" name="municipality">
+                                        <select class="form-control @error('municipality') is-invalid @enderror" id="municipality" required name="municipality">
                                             <option value="" selected="" disabled="">
                                                 Izaberite opštinu
                                             </option>
@@ -43,6 +43,11 @@
                                             </option>
                                         @endforeach
                                         </select>
+                                        @error('municipality')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         <!-- <select class="form-control" id="municipality" name="municipality">
                                             <option value="" selected="" disabled="">
                                                 Izaberite opštinu
@@ -77,18 +82,13 @@
                                             <option value="10">
                                                 Zvezdara
                                             </option>
-                                        </select> -->
-                                            @error('municipality')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                        </select> -->  
                                     </div>
                                     <div class="form-group">
                                         <label for="address">
                                             ADRESA I BROJ STANA:
                                         </label>
-                                        <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" autocomplete="address" autofocus>
+                                        <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
                                         @error('address')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -110,7 +110,7 @@
                                         <label for="phone">
                                             BROJ TELEFONA:
                                         </label>
-                                        <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" autocomplete="phone" autofocus>
+                                        <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
                                         @error('phone')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -119,7 +119,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="password">LOZINKA</label>
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="password">
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -130,7 +130,12 @@
                                         <label for="password-confirm">
                                             POTVRDITE LOZINKU
                                         </label>
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                        <input id="password-confirm" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required autocomplete="password_confirmation">
+                                        @error('password_confirmation')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <!--CAPTCHA SA KOMSIJA VIP--> 
                                     <div class="form-group">
