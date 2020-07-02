@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.modal.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('awesome/css/all.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css?v=1.4') }}">
+	@yield('style')
 </head>
 <body>
 	<main>

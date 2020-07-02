@@ -95,6 +95,8 @@
                                             </span>
                                         @enderror
                                     </div>
+                                </div>    
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="email">EMAIL</label>
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -104,8 +106,6 @@
                                                 </span>
                                             @enderror
                                     </div>
-                                </div>    
-                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="phone">
                                             BROJ TELEFONA:
@@ -137,23 +137,16 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    <!--CAPTCHA SA KOMSIJA VIP--> 
-                                    <div class="form-group">
-                                        <img class="captche img-fluid mb-3" src="https://komsija.vip/data/captcha/securimage_show.php" alt="CAPTCHA Image" style="width: 40%">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="captcha_code" size="10" maxlength="6" placeholder="Rezultat računice sa slike">
-                                        <a href="#" class="promeni" onclick="document.getElementById('captcha').src = 'https://komsija.vip/data/captcha/securimage_show.php?' + Math.random(); return false">DRUGA SLIKA</a> 
-                                    </div>
-                                    <!--CAPTCHA SA KOMSIJA VIP-->    
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-block">
                                             {{ __('Register') }}
                                         </button>
                                     </div>
                                 </div> 
-                            </div>   
-                            <p>IMATE PROFIL? ULOGUJTE SE OVDE</p>
+                            </div> 
+                            <a href="{{ route('login') }}">
+                                <p>IMATE PROFIL? ULOGUJTE SE OVDE</p>
+                            </a>  
                         </form>
                     </div>
                 </div>
@@ -161,17 +154,4 @@
         </div>
     </div>
 </section>
-@endsection
-@section('scripts')
-<script>
-$(function(){
-    /*CAPTCHA SA KOMSIJA VIP*/
-    $(".captche").attr("src","https://komsija.vip/data/captcha/securimage_show.php");
-
-    $(".promeni").click(function (e) {
-        $(".captche").attr("src","https://komsija.vip/data/captcha/securimage_show.php?" + Math.random());
-    })
-    /*CAPTCHA SA KOMSIJA VIP*/
-})
-</script>
 @endsection

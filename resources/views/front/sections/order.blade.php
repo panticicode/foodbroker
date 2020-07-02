@@ -178,6 +178,13 @@
 		$("#backToPrev").click(function(){
 			$("#order").hide(750)
 		})
+		$(window).scroll(function(){
+			if ($(this).scrollTop() > 0) {
+			    $("nav").fadeOut(750)
+			} else {
+			    $("nav").fadeIn(500)
+			}
+		})
 	})
 </script>
 @endsection

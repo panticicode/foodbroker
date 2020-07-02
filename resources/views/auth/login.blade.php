@@ -33,7 +33,9 @@
                                     {{ __('Login') }}
                                 </button>
                             </div>
-                            <p>JOS UVEK NISTE REGISTROVANI?</p>
+                            <a href="{{ route('register') }}">
+                                <p>JOS UVEK NISTE REGISTROVANI?</p>
+                            </a>
                         </form>
                     </div>
                 </div>

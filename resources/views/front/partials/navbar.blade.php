@@ -9,10 +9,25 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navbarNav">
 	  	<ul class="navbar-nav mr-auto">
-             <li class="nav-item">
-             	<a class="nav-link" href="#">
-             	</a>
-             </li>  
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+            @if(Auth::user())
+                @if(Auth::user()->isAdmin())
+                <li class="nav-item hideOnSmallScreen">
+                    <a id="dashboard-link" href="{{ route('index') }}" class="nav-link">
+                        {{ __('Dashboard') }}
+                    </a>
+                </li>
+                @endif
+                @if(Auth::user()->isFoodBroker())
+                <li class="nav-item hideOnSmallScreen">
+                    <a id="dashboard-link" href="{{ route('foodbroker.index') }}" class="nav-link">
+                        {{ __('Dashboard') }}
+                    </a>
+                </li>
+                @endif
+            @endif 
         </ul>
         @if(Auth::user())
             <div id="hideOnSmallScreen" class="navbar-nav pt-3 mr-5">
@@ -44,27 +59,18 @@
             	        </a>
             	    </li>
                 @else
-                    <li class="nav-item">
+                    <li class="nav-item hideOnSmallScreen">
                         <a id="profile-link" href="{{ route('profile') }}" class="nav-link">
                             {{ __('Profil') }}
                         </a>
-                    </li>  
-                    @if(Auth::user()->isAdmin())
-                    <li class="nav-item">
-                        <a id="profile-link" href="{{ route('index') }}" class="nav-link">
-                            {{ __('Dashboard') }}
+                    </li> 
+                    <!-- <li class="nav-item">
+                        <a id="profile-link" href="#" class="nav-link">
+                            &nbsp;&nbsp;&nbsp;
                         </a>
-                    </li>
-                    @endif
-                    @if(Auth::user()->isFoodBroker())
+                    </li>  -->
                     <li class="nav-item">
-                        <a id="profile-link" href="{{ route('foodbroker.index') }}" class="nav-link">
-                            {{ __('Dashboard') }}
-                        </a>
-                    </li>
-                    @endif  
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}"
+                        <a class="nav-link logout" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
                             <i class="fa fa-power-off" aria-hidden="true"></i>

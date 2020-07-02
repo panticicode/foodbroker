@@ -101,7 +101,7 @@
 			</div>
 			<div id="small-screen">
 				<div id="azuriraj" class="form-group">
-					<button class="btn btn-outline-secondary">
+					<button class="btn btn-default">
 						NASTAVI KA KUPOVINI
 					</button>
 				</div>	
@@ -115,6 +115,13 @@
 	$("#cart").show(750)
 	$("#backToPrev").click(function(){
 		$("#cart").hide(500)
+	})
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 0) {
+		    $("nav .hideOnSmallScreen").fadeOut(750)
+		} else {
+		    $("nav .hideOnSmallScreen").fadeIn(500)
+		}
 	})
 </script>
 @endsection

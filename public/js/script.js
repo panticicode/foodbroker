@@ -34,10 +34,8 @@ $(() => {
   		$(window).scroll((evt) => {
 			if ($(evt.currentTarget).scrollTop() > 0) {
 			    $("nav #hideOnSmallScreen").fadeOut(750)
-			    $("nav .hideOnSmallScreen").fadeOut(750)
 			} else {
 			    $("nav #hideOnSmallScreen").fadeIn(500)
-			    $("nav .hideOnSmallScreen").fadeIn(500)
 			}
 		})
 		$("nav#navbar").addClass("fixed-top")

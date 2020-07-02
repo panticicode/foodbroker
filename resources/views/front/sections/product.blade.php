@@ -137,12 +137,15 @@
 
 		});
 		$("#cat-1").on('click', function(){
-			$("nav #hideOnSmallScreen").hide()
+			$("nav #hideOnSmallScreen").fadeOut(750)
 			$("#categoryModal").modal({
 			  	fadeDuration: 500,
 			  	fadeDelay: 0.50
 			});
 		});
+		$("#categoryModal #block-thumbnail").on('click', function(){
+			$("nav #hideOnSmallScreen").fadeIn(500)
+		})
 		var defaultProduct = $(".content").parent().data('counter')
 	   	$(".content").each(function() {
 	        $(this).hide();
@@ -172,6 +175,13 @@
 		}); 
 		$(".btn-success").click(function (){
 			$("#category").hide(500)
+		})
+		$(window).scroll(function(){
+			if ($(this).scrollTop() > 0) {
+			    $("nav .hideOnSmallScreen").fadeOut(750)
+			} else {
+			    $("nav .hideOnSmallScreen").fadeIn(500)
+			}
 		})
 		// $("#backToPrev").click(function(){
 		// 	$("#cart").hide()
