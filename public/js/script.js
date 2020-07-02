@@ -2,12 +2,48 @@ $(() => {
 	let left 
 	if($(window).innerWidth() > 575)
 	{
-		left = "70px"
+		left = "60px"
 	}
 	else
 	{
 		left = "30px"
 	}
+	/**NAVIGATION**/
+	if($(window).innerWidth() < 576)
+    {
+        $("#hideOnSmallScreen").hide()
+        $("nav #hideOnSmallScreen a").hide()
+        $("nav #navBarMenu").click((evt) => {
+	       	$("footer p").toggleClass("moveWhenReady")
+	    })
+    }
+    if($(window).innerWidth() > 575)
+    {
+        $(".bordered.col-lg-1").css({
+        	flex: "0 0 6.333333%",
+			maxWidth: "6.333333%"
+        })
+        $("#block-left-thumbnail a img").css({
+        	width: "8vw",
+        	marginLeft: 0
+        })
+        $("nav ul.navbar-nav li.register").css({
+        	position: "absolute",
+  			left: "15px"
+  		})
+  		$(window).scroll((evt) => {
+			if ($(evt.currentTarget).scrollTop() > 0) {
+			    $("nav #hideOnSmallScreen").fadeOut(750)
+			    $("nav .hideOnSmallScreen").fadeOut(750)
+			} else {
+			    $("nav #hideOnSmallScreen").fadeIn(500)
+			    $("nav .hideOnSmallScreen").fadeIn(500)
+			}
+		})
+		$("nav#navbar").addClass("fixed-top")
+		$(".img-fluid").css("padding", "7px")
+    }
+    /**NAVIGATION**/
 	/**Section Main **/
     $(".main img").on("click", () => {
         $(".main").delay(350).fadeOut(1000)
@@ -20,14 +56,13 @@ $(() => {
             	left: left
             }, 750, () => {
             	$(".bordered").animate({
-	            	left: "25px"
+	            	left: left
 	            },750, () => {
 	            	let showBackground = () => {
-	            		$(".category").css({
-						   background: "#efebeb",
+	            		$(".category #cat-10 .row:eq(1)").css({
+						   background: "#E3EFF9",
 						   border: "2px solid #cccccc",
-						   borderRadius: "25px",
-						   margin: "0 15px"
+						   borderRadius: "25px"
 		            	}, 900)
 	            	}
 	            	$(".category").delay(750).queue(showBackground)
@@ -38,48 +73,24 @@ $(() => {
        		$(".img-thumbnail").animate({
             	padding: "30px 0 0"
             }, 750)
+            $(".img-thumbnail").css("text-align", "center")
             $("#cat-10").animate({
             	maxWidth: "60%",
-					marginLeft: "100px"
+    			marginLeft: "175px"
             }, 750)
        	}) 
-       	$("#cat-1").on({
-       		mouseenter: (evt) => {
-			    if(!('ontouchstart' in window))
-				{
-			        $(".bordered.col-lg-1").css({
-			        	flex: "0 0 10.333333%",
-    					maxWidth: "10.333333%"
-			        }) 
-			    }       
-		    },         
-		    mouseleave: (evt) => {
-			    if(!('ontouchstart' in window))
-				{   
-			        $(".bordered.col-lg-1").css({
-			        	flex: "0 0 6.333333%",
-    					maxWidth: "6.333333%"
-			        })
-			    }    
-		    }
-       	})
-		$("#block-thumbnail a img").on({                         
+        	
+		$("#block-left-thumbnail a img").on({                         
 		    mouseenter: (evt) => {
 			    if(!('ontouchstart' in window))
 				{
-			        $(evt.currentTarget).css({
-			            width: "8vw",
-			            padding: "5px"
-			        }) 
+			        $(evt.currentTarget).addClass("cat-Border")
 			    }    
 		    },         
 		    mouseleave: (evt) => {
 		    if(!('ontouchstart' in window))
 				{	
-			        $(evt.currentTarget).css({
-			            width: "6vw",
-			            padding: "0"
-			        })
+			        $(evt.currentTarget).removeClass("cat-Border")
 			    }    
 		    },
 		    click: (evt) => {
@@ -88,7 +99,11 @@ $(() => {
 			        $(".bordered.col-lg-1").css({
 			        	flex: "0 0 6.333333%",
     					maxWidth: "6.333333%"
-			        })   
+			        }) 
+			        $("#block-thumbnail a img").css({
+			        	width: "8vw"
+			        })
+			        $("#cat-1").css("height", "554px")
 			    }  
 		    },
 		    touchstart: (evt) => {
@@ -112,13 +127,14 @@ $(() => {
 		})
 			let preventClick = false
 
-		$(".figure-img").on('click', (evt) => {
-			if(!preventClick)
-  			{
-				$(evt.currentTarget).closest(".img-thumbnail").dimBackground().addClass("showBackground").css("padding", "20px 0 0").find(".seek").show()
-  				preventClick = true
-  			}	
-		})
+		// $(".figure-img").on('click', (evt) => {
+		// 	if(!preventClick)
+  // 			{
+  // 				$("section.category #cat-10").css("opacity", 1)
+		// 		$(evt.currentTarget).closest(".img-thumbnail").dimBackground().addClass("showBackground").find(".seek").show()
+  // 				preventClick = true
+  // 			}	
+		// })
 		$(".img-thumbnail").on({                         
 		    mouseenter: (evt) => {
 		        $(evt.currentTarget).css("cursor","zoom-in")
@@ -126,13 +142,13 @@ $(() => {
 		    mouseleave: (evt) => {
 		        $(evt.currentTarget).css("cursor","zoom-out")
 		    },
-		    mouseleave: (evt) => {
-			    if(preventClick)
-  				{	
-			        $(evt.currentTarget).undim().removeClass("showBackground").css("padding", "30px 0 0").find(".seek").hide()
-			        preventClick = false
-			    }    
-		    },
+		    // mouseleave: (evt) => {
+			   //  if(preventClick)
+  				// {	
+			   //      $(evt.currentTarget).undim().removeClass("showBackground").css("padding", "30px 0 0").find(".seek").hide()
+			   //      preventClick = false
+			   //  }    
+		    // },
 		})
 		$(document).on("click", ".btn-danger", (evt) => {
 			if(preventClick)

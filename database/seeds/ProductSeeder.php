@@ -16,256 +16,274 @@ class ProductSeeder extends Seeder
 
         $products = [
             [
-                'title' => 'Jabuke',
-                'cat_id' => 1,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                'price' => rand(20, 50),
-                'visibility' => 1,
-                'quantity' => 0,
-                'image' => 'jabuke.png'
-            ],
-            [
                 'title' => 'Ananas',
                 'cat_id' => 1,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
+                'quantity' => 0,
+                'image' => 'ananas.png'
+            ],
+            [
+                'title' => 'Banane',
+                'cat_id' => 1,
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'price' => rand(20, 50),
+                'visibility' => 1,
                 'quantity' => 1,
-                'image' => 'jabuke.png'
+                'image' => 'banane.png'
             ],
             [
-                'title' => 'Pomorandze',
-                'cat_id' => 1,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                'price' => rand(20, 50),
-                'visibility' => 0,
-                'quantity' => 0,
-                'image' => 'pomorandze.png'
-            ],
-            [
-                'title' => 'Jabuke',
+                'title' => 'Banane',
                 'cat_id' => 1,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
-                'quantity' => 0,
-                'image' => 'jabuke.png'
-            ],
-            [
-                'title' => 'Konzerva',
-                'cat_id' => 1,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                'price' => rand(20, 50),
-                'visibility' => 0,
                 'quantity' => 1,
-                'image' => 'dzem.png'
+                'image' => 'banane.png'
             ],
             [
-                'title' => 'Kivi',
+                'title' => 'Dinja',
                 'cat_id' => 1,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'jabuke.png'
+                'image' => 'dinje.png'
             ],
             [
-                'title' => 'Kupus',
+                'title' => 'Grejpfrut',
+                'cat_id' => 1,
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'price' => rand(20, 50),
+                'visibility' => 1,
+                'quantity' => 1,
+                'image' => 'grejpfrut.png'
+            ],
+            [
+                'title' => 'Grejpfrut',
+                'cat_id' => 1,
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'price' => rand(20, 50),
+                'visibility' => 1,
+                'quantity' => 0,
+                'image' => 'grejpfrut.png'
+            ],
+            [
+                'title' => 'Ajdared',
+                'cat_id' => 1,
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'price' => rand(20, 50),
+                'visibility' => 1,
+                'quantity' => 0,
+                'image' => 'ajdared.png'
+            ],
+            [
+                'title' => 'Crveni Delises',
+                'cat_id' => 1,
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'price' => rand(20, 50),
+                'visibility' => 1,
+                'quantity' => 0,
+                'image' => 'crveni-delises.png'
+            ],
+            [
+                'title' => 'Crveni Delises',
+                'cat_id' => 1,
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'price' => rand(20, 50),
+                'visibility' => 1,
+                'quantity' => 0,
+                'image' => 'crveni-delises.png'
+            ],
+            [
+                'title' => 'Greni Smit',
+                'cat_id' => 1,
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'price' => rand(20, 50),
+                'visibility' => 1,
+                'quantity' => 0,
+                'image' => 'greni-smit.png'
+            ],
+            [
+                'title' => 'Zlatni Delises',
+                'cat_id' => 1,
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'price' => rand(20, 50),
+                'visibility' => 1,
+                'quantity' => 0,
+                'image' => 'zlatni-delises.png'
+            ],
+            [
+                'title' => 'Zlatni Delises',
+                'cat_id' => 1,
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'price' => rand(20, 50),
+                'visibility' => 1,
+                'quantity' => 0,
+                'image' => 'zlatni-delises.png'
+            ],
+            [
+                'title' => 'Ajdared',
+                'cat_id' => 1,
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'price' => rand(20, 50),
+                'visibility' => 1,
+                'quantity' => 0,
+                'image' => 'ajdared.png'
+            ],
+            [
+                'title' => 'Zlatni Delises',
+                'cat_id' => 1,
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'price' => rand(20, 50),
+                'visibility' => 1,
+                'quantity' => 0,
+                'image' => 'zlatni-delises.png'
+            ],
+            [
+                'title' => 'Zlatni Delises',
+                'cat_id' => 1,
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'price' => rand(20, 50),
+                'visibility' => 1,
+                'quantity' => 0,
+                'image' => 'zlatni-delises.png'
+            ],
+            [
+                'title' => 'Brokoli',
                 'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'kupus.png'
+                'image' => 'brokoli.png'
             ],
             [
-                'title' => 'Kupus',
+                'title' => 'Avokado',
                 'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'kupus.png'
+                'image' => 'avokado.png'
             ],
             [
-                'title' => 'Kupus',
+                'title' => 'Ratluk',
                 'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'kupus.png'
+                'image' => 'ratluk.png'
             ],
             [
-                'title' => 'Kupus',
+                'title' => 'Crvena Paprika',
                 'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'kupus.png'
+                'image' => 'crvena-paprika.png'
             ],
             [
-                'title' => 'Kupus',
+                'title' => 'Zelena salata',
                 'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'kupus.png'
+                'image' => 'zelena-salata.png'
             ],
             [
-                'title' => 'Kupus',
+                'title' => 'ratluk',
                 'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'kupus.png'
+                'image' => 'ratluk.png'
             ],
             [
-                'title' => 'Sampinjoni',
-                'cat_id' => 3,
+                'title' => 'Brokoli',
+                'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'gljive.png'
+                'image' => 'brokoli.png'
             ],
             [
-                'title' => 'Sampinjoni',
-                'cat_id' => 3,
+                'title' => 'Zelena Salata',
+                'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'gljive.png'
+                'image' => 'zelena-salata.png'
             ],
             [
-                'title' => 'Sampinjoni',
-                'cat_id' => 3,
+                'title' => 'Crvena paprika',
+                'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'gljive.png'
+                'image' => 'crvena-paprika.png'
             ],
             [
-                'title' => 'Sampinjoni',
-                'cat_id' => 3,
+                'title' => 'Zelena salata',
+                'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'gljive.png'
+                'image' => 'zelena-salata.png'
             ],
             [
-                'title' => 'Sampinjoni',
-                'cat_id' => 3,
+                'title' => 'Brokoli',
+                'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'gljive.png'
+                'image' => 'brokoli.png'
             ],
             [
-                'title' => 'Sampinjoni',
-                'cat_id' => 3,
+                'title' => 'Avokado',
+                'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'gljive.png'
+                'image' => 'avokado.png'
             ],
             [
-                'title' => 'Kackavalj',
-                'cat_id' => 4,
+                'title' => 'Crvena paprika',
+                'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'mlecni.png'
+                'image' => 'crvena-paprika.png'
             ],
             [
-                'title' => 'Kackavalj',
-                'cat_id' => 4,
+                'title' => 'Ratluk',
+                'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'mlecni.png'
+                'image' => 'ratluk.png'
             ],
             [
-                'title' => 'Kackavalj',
-                'cat_id' => 4,
+                'title' => 'Brokoli',
+                'cat_id' => 2,
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
                 'price' => rand(20, 50),
                 'visibility' => 1,
                 'quantity' => 0,
-                'image' => 'mlecni.png'
-            ],
-            [
-                'title' => 'Kackavalj',
-                'cat_id' => 4,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                'price' => rand(20, 50),
-                'visibility' => 1,
-                'quantity' => 0,
-                'image' => 'mlecni.png'
-            ],
-            [
-                'title' => 'Kackavalj',
-                'cat_id' => 4,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                'price' => rand(20, 50),
-                'visibility' => 1,
-                'quantity' => 0,
-                'image' => 'mlecni.png'
-            ],
-            [
-                'title' => 'Kackavalj',
-                'cat_id' => 4,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                'price' => rand(20, 50),
-                'visibility' => 1,
-                'quantity' => 0,
-                'image' => 'mlecni.png'
-            ],
-            [
-                'title' => 'Neko Meso',
-                'cat_id' => 5,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                'price' => rand(20, 50),
-                'visibility' => 1,
-                'quantity' => 0,
-                'image' => 'meso.png'
-            ],
-            [
-                'title' => 'Neko Meso',
-                'cat_id' => 5,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                'price' => rand(20, 50),
-                'visibility' => 1,
-                'quantity' => 0,
-                'image' => 'meso.png'
-            ],
-            [
-                'title' => 'Neko Meso',
-                'cat_id' => 5,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                'price' => rand(20, 50),
-                'visibility' => 1,
-                'quantity' => 0,
-                'image' => 'meso.png'
-            ],
-            [
-                'title' => 'Neko Meso',
-                'cat_id' => 5,
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                'price' => rand(20, 50),
-                'visibility' => 1,
-                'quantity' => 0,
-                'image' => 'meso.png'
+                'image' => 'brokoli.png'
             ],
             [
                 'title' => 'Neko Meso',
@@ -407,7 +425,7 @@ class ProductSeeder extends Seeder
         //     ],
         //     [
         //         'title' => 'Kupus',
-        //         'cat_id' => 2,
+        //         'cat_id' => 1,
         //         'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         //         'price' => rand(20, 50),
         //         'visibility' => 1,

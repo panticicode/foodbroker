@@ -1,6 +1,10 @@
-<nav id="navbar" class="navbar navbar-expand-sm navbar-light bg-light">
-	<a class="navbar-brand" href="#"></a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<nav id="navbar" class="navbar navbar-expand-sm navbar-light mt-3">
+	<a class="navbar-brand logo" href="#"></a>
+    <a class="navbar-brand cart" href="{{ route('cart') }}">
+        <img src="{{ asset('images/assets/Group 340.png') }}" alt="group340">
+        <span class="count">{{ Cart::content()->count() }}</span>
+    </a>
+	<button id="navBarMenu" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	</button>
 	<div class="collapse navbar-collapse" id="navbarNav">
@@ -11,28 +15,30 @@
              </li>  
         </ul>
         @if(Auth::user())
-            <div class="navbar-nav pt-3 mr-5">
+            <div id="hideOnSmallScreen" class="navbar-nav pt-3 mr-5">
                 <h3 class="display-5 mr-5">
-                    <a href="{{ route('index') }}">KOMSIJAVIP</a>
+                    <a href="{{ route('index') }}"></a>
                 </h3>
             </div>
         @else
-            <div class="navbar-nav pt-3">
-                <h3 class="display-5">
-                    <a href="{{ route('index') }}">KOMSIJAVIP</a>
+            <div id="hideOnSmallScreen" class="navbar-nav pt-3 mr-5">
+                <h3 class="display-5 mr-5">
+                    <a href="{{ route('index') }}">
+
+                    </a>
                 </h3>
-            </div>
+            </div>    
         @endif
     	<ul class="navbar-nav ml-auto">
             @guest    
                 @if (Route::has('register'))
-                    <li class="nav-item">
+                    <li class="nav-item register hideOnSmallScreen">
                      	<a class="nav-link" href="{{ route('register') }}">
                      		{{ __('REGISTRACIJA') }}
                      	</a>
                     </li>
                 @endif
-            	    <li class="nav-item">
+            	    <li class="nav-item hideOnSmallScreen">
             	        <a class="nav-link" href="{{ route('login') }}">
             	        	{{ __('LOGIN') }}
             	        </a>
@@ -71,4 +77,5 @@
             @endguest
         </ul>
 	</div>
+    
 </nav>

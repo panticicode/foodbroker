@@ -10,16 +10,10 @@
 		    <div id="cat-border" class="col-lg-6 col-md-8 col-sm-8 col-8 mb-3 mt-3">
 		      	<h3>{{ $category->title }}</h3>
 		    </div>
+		    <span>
+		    	&nbsp;&nbsp;&nbsp;
+		    </span>
 		</div>
 		@endforeach
 	</div>
-	<div class="row">
-		<div class="col"></div>
-		<div class="col"></div>
-		<div class="col">
-			{{ $categories->links() }}
-		</div>
-		<div class="col"></div>
-	</div>
-	
 </section>

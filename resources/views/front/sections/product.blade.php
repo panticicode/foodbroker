@@ -2,66 +2,89 @@
 @section('main')
 <section id="category" class="category">
 	<div class="row">
-		<div id="cat-1" class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2 bordered mt-5 mb-3">
-			@foreach($categories as $category)
-			<div id="block-thumbnail">
-				<a href="#">
-					<img class="img-fluid rounded-circle" src="{{ $category->getImage($category->image) }}" data-id="{{ $category->id }}">
-				</a>
+		<div id="cat-12" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
+			<div class="hr">
+				<hr class="ml-4">
 			</div>
-			@endforeach
+			<form method="POST" action="{{ route('login') }}">
+            {{ csrf_field() }}
+			<div id="hr-line" class="row">
+				<div class="col letter">
+					<input type="text" placeholder="Email" name="email" class="btn btn-block letter @error('email') is-invalid @enderror">
+					@error('email')
+	                    <span class="invalid-feedback" role="alert">
+	                        <strong>{{ $message }}</strong>
+	                    </span>
+	                @enderror
+				</div>
+				<div class="col padlock">
+					<input type="password" placeholder="Password" name="password" class="btn btn-block padlock @error('password') is-invalid @enderror">
+					@error('password')
+	                    <span class="invalid-feedback" role="alert">
+	                        <strong>{{ $message }}</strong>
+	                    </span>
+	                @enderror
+				</div>
+				<input type="submit" style="display:none">
+			</div>
+			</form>	
+		</div>
+		<div id="cat-1" class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2 bordered">
+			@include('front.partials.cat_modal')
+			<div class="layout-img">
+				@foreach($categories as $category)
+				<div id="block-left-thumbnail">
+					<a href="#">
+						<img class="img-fluid rounded-circle" src="{{ $category->getImage($category->image) }}" data-id="{{ $category->id }}">
+					</a>
+				</div>
+				@endforeach
+			</div>	
 		</div>
 		<div id="cat-10" class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10 fruit mt-3">
-			<div class="row ml-3">
-				<div>
-					<h2 class="float-left">
-						Voce:
-					</h2>
-				</div>	
-				 <div class="ml-auto mr-3">
-				<a href="{{ route('cart') }}" class="btn btn-success float-right">
-					KORPA
-					<span class="count">{{ Cart::content()->count() }}</span>
-				</a>
-
-				</div>	
-			</div>	
-			<hr class="ml-3">
-			<div class="row ml-1" data-counter="{{ $defaults }}">
+			<!--OVDE JE BILO-->
+			<div id="grid-layout" class="row ml-4" data-counter="{{ $defaults }}">
 				@foreach($products as $product)
+				<div id="gridModal" class="modal">
+				     
+				</div>
 				<div id="{{ $product->cat_id }}" class="col-4 content">
-					<div class="img-thumbnail" data-stock="{{ $product->visibility }}">
+					<div class="img-thumbnail">
 						<figure class="figure">
-				  			<img src="{{ $product->getImage($product->image) }}" class="figure-img img-fluid rounded-circle" alt="placeholder">
-						  	<figcaption class="figure-caption">
-						  		<h3 data-stock="{{ $product->visibility }}">
-								{{ $product->visibility ? $product->title : "OUT OF STOCK" }}
-						  		</h3>	
-						  		<div class="row seek" data-stock="{{ $product->visibility }}">
-									<form action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
-									{{ csrf_field() }}
-										<hr class="mt-4">
-										<div class="form-group" style="margin-bottom: 0" id="input-container">
-											<input type="hidden" name="quantity" value="{{ $product->quantity }}">
-										@if(!$product->quantity)
-											<label for="input">ODABERITE TEZINU:</label>
-											<input type="hidden" name="qty">
-								            <input type="number" class="form-control input" name="weight" step="0.1" min="0" value="0.0">
-											<span id="kg">KG</span>
-								        @else
-								            <label for="input">ODABERITE KOLICINU:</label>
-								            <input type="hidden" name="weight">
-								            <input type="number" class="form-control input" name="qty" min="1" value="1">
-								            <span id="kom">KOM</span>
-										@endif
-								        </div>
-								        <button class="btn btn-danger btn-block mt-4">
-					                		<i class="fas fa-shopping-cart" style="position:relative; margin-right:40%"><span>Dodaj</span>
-					                		</i>
-					                	</button>
-				                	</form>
-				                </div>
-						  	</figcaption>
+							<div class="layout-img" data-id="{{ $product->id }}" data-stock="{{ $product->visibility }}" data-img="{{ $product->getImage($product->image) }}" data-name="{{ $product->title }}" data-price="{{ $product->price }}" data-check="{{ $product->quantity }}">
+								<img src="{{ $product->getImage($product->image) }}" class="figure-img" alt="placeholder">
+							  	<figcaption class="figure-caption">
+							  		<div class="row seek" data-stock="{{ $product->visibility }}">
+										<form action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
+										{{ csrf_field() }}
+											<hr class="mt-4">
+											<div class="form-group" style="margin-bottom: 0" id="input-container">
+												<input type="hidden" name="quantity" value="{{ $product->quantity }}">
+											@if(!$product->quantity)
+												<label for="input">ODABERITE TEZINU:</label>
+												<input type="hidden" name="qty">
+									            <input type="number" class="form-control input" name="weight" step="0.1" min="0" value="0.0">
+												<span id="kg">KG</span>
+									        @else
+									            <label for="input">ODABERITE KOLICINU:</label>
+									            <input type="hidden" name="weight">
+									            <input type="number" class="form-control input" name="qty" min="1" value="1">
+									            <span id="kom">KOM</span>
+											@endif
+									        </div>
+									        <button class="btn btn-danger btn-block mt-4">
+						                		<i class="fas fa-shopping-cart" style="position:relative; margin-right:40%"><span>Dodaj</span>
+						                		</i>
+						                	</button>
+					                	</form>
+					                </div>
+							  	</figcaption>
+						  	</div>
+						  	<h3 data-stock="{{ $product->visibility }}">
+							{!!
+							$product->visibility ? strtoupper($product->title) : "OUT OF <br>STACK" 
+							!!}
+					  		</h3>
 						</figure>
 					</div>
 				</div>
@@ -69,113 +92,57 @@
 			</div>
 		</div>
 	</div>
-	
 </section>
-
-<!-- <section id="cart"	class="cart">
-	<form action="{{ route('cart.create') }}" method="post">
-	{{ csrf_field() }}
-		<div class="container">
-			<div class="table-responsive">
-				<table class="table">
-					<thead class="thead-light">
-					    <tr>
-					      	<th scope="col">
-						      	<a href="#">
-						      		<i id="backToPrev" class="fas fa-undo-alt xLeft"></i>
-						      	</a>
-					      	</th>
-					      	<th scope="col">Slika</th>
-					      	<th scope="col">Proizvod</th>
-					      	<th scope="col">Cena</th>
-					      	<th scope="col">Tezina / Kolicina</th>
-					      	<th scope="col">Ukupno</th>
-					    </tr>
-					</thead>
-					<tbody>
-					@foreach(Cart::content() as $product)
-					<tr>
-				      	<th scope="row">
-				      		<a href="{{ route('cart.delete', ['id' => $product->rowId]) }}">
-					      		<i class="fa fa-times-circle deleteRow" aria-hidden="true"></i>
-					      	</a>
-						</th>
-				      	<td>
-				      		<a href="#">
-								<img class="img-fluid" src="{{ asset($product->model->getImage($product->model->image)) }}" style="width: 70px; height: 80px">
-							</a>
-				      	</td>
-				      	<td>{{ $product->name }}</td>
-				      	<td>{{ $product->price }}</td>
-				      	<td>
-						@if($product->options->quantity)	
-                            <a href="{{ route('quantity.reduce', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
-				      			<i class="fa fa-minus-circle" aria-hidden="true"></i>
-				      		</a>
-				      		<input type="hidden" name="qty[]" value="{{ $product->qty }}">
-				      		<span class="qty">
-							{{ $product->qty }}
-				     		</span>
-                            <a href="{{ route('quantity.increase', ['id' => $product->rowId, 'qty' => $product->qty]) }}">
-				      			<i class="fa fa-plus-circle" aria-hidden="true"></i>
-				      		</a>
-						@else
-                            <a href="{{ route('weight.reduce', ['id' => $product->rowId, 'weight' => $product->weight]) }}">
-				      			<i class="fa fa-minus-circle" aria-hidden="true"></i>
-				      		</a>
-				      		<input type="hidden" name="weight[]" value="{{ $product->weight }}">
-				      		<span class="qty">
-							{{ $product->weight }}
-				     		</span>
-                            <a href="{{ route('weight.increase', ['id' => $product->rowId, 'weight' => $product->weight]) }}">
-				      			<i class="fa fa-plus-circle" aria-hidden="true"></i>
-				      		</a> 
-						@endif
-				      	</td>
-				      	<td>
-						@if($product->options->quantity)
-							{{ $qty = $product->price * $product->qty }} RSD
-						@else
-							{{ $weight = Cart::weight() * $product->price }} RSD
-						@endif
-				      	</td>
-				    </tr>
-
-					@endforeach
-					    <tr>
-					      	<th scope="row">
-					      		TOTAL:
-							</th>
-					      	<td></td>
-					      	<td></td>
-					      	<td></td>
-					      	<td></td>
-					      	<td>
-					      		<span>
-									@if(isset($qty) && isset($weight))
-										{{ $qty + $weight }} RSD 
-									@endif	
-					      		</span>   
-					      	</td>
-					    </tr>
-					</tbody>
-				</table>	
-			</div>
-			<div id="small-screen">
-				<div id="azuriraj" class="form-group">
-					<button class="btn btn-outline-secondary">
-						NASTAVI KA KUPOVINI
-					</button>
-				</div>		
-			</div>
-		</div>
-	</form>	
-</section> -->
-
 @endsection
 @section('script')
 <script>
 	$(function() {
+		$(".layout-img").click(function(evt){
+			var id    = $(this).attr("data-id"),
+				img   = $(this).attr("data-img"),
+				name  = $(this).attr("data-name"),
+				price = $(this).attr("data-price"),
+				stock = $(this).attr("data-stock"),
+				check = $(this).attr("data-check"),
+				type  = check == false ? 'KG' : 'KOM',
+				chose = check == false ? 'ODABERITE TEŽINU' : 'ODABERITE KOLIČINU';
+				
+			$("#gridModal").html(`
+			<div id="layout-modal" class="layout-img">
+				<img src="${img}" class="figure-img" alt="">
+				<h3>${name.toUpperCase()}</h3>
+				<p class="lead">${price} RSD/${type}</p>
+			  	<figcaption class="figure-caption">
+			  		<form action="cart/add/${id}" method="POST">
+					{{ csrf_field() }}	
+						<div class="form-group" style="margin-bottom: 0" id="input-container">
+							<label for="input">${chose}:</label>
+						    <input type="number" class="form-control input" name="weight" step="0.1" min="0" value="0.0">
+							<span id="kg">${type}</span>
+						</div>
+				        <button class="btn btn-block mt-4">
+	                		DODAJ U KORPU
+	                	</button>
+                	</form>
+			  	</figcaption>
+		  	</div>
+			`)
+			if(stock == true)
+			{
+				$("#gridModal").modal({
+				  	fadeDuration: 500,
+				  	fadeDelay: 0.50
+				});
+			}
+
+		});
+		$("#cat-1").on('click', function(){
+			$("nav #hideOnSmallScreen").hide()
+			$("#categoryModal").modal({
+			  	fadeDuration: 500,
+			  	fadeDelay: 0.50
+			});
+		});
 		var defaultProduct = $(".content").parent().data('counter')
 	   	$(".content").each(function() {
 	        $(this).hide();
@@ -189,6 +156,12 @@
 		$('#block-thumbnail a img').on( "click", function(e) {
 		    e.preventDefault();
 		    var id = $(this).attr('data-id'); 
+
+			// $("#block-thumbnail a img").each(function(){
+		 //       	$(this).removeClass("cat-Border");
+		 //    });
+			// $(this).addClass("cat-Border");
+
 		    $(".content").each(function(){
 		        $(this).hide();
 		        $('.main-default').hide();
@@ -204,8 +177,6 @@
 		// 	$("#cart").hide()
 		// 	$("#category").show()
 		// })
-
-		
 	});
 </script>
 @endsection
