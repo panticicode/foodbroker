@@ -257,9 +257,11 @@ section.category #cat-10 .layout-img {
   display: inline-block;
 }
 section.category #cat-10 .figure-img {
-   right: -3px;
-   top: 30px;
-   position: relative   
+    right: -3px;
+    top: 32px;
+    position: relative;
+    width: 65px;
+    height: max-content;
 }
 section.category #cat-10 .img-thumbnail {
     background: none;
@@ -320,6 +322,8 @@ section.category #cat-10 .figure h3 {
 #layout-modal img{
     position: relative;
     top: 25px;
+    width: 78px;
+    height: 78px;
 }
 #gridModal h3 {
     margin-top: 60px;
