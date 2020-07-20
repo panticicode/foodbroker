@@ -51,7 +51,7 @@ class ShoppingsController extends Controller
                 'quantity' => $request->quantity
             ]
         ]);
-        
+        // dd($cartItem);
         Cart::associate($cartItem->rowId, 'App\Models\Product');
 
         return redirect('product');

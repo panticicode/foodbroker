@@ -140,7 +140,7 @@ section.category #cat-12 #hr-line {
   margin: 0 42px;
 }
 section.category #cat-12 hr:first-child{
-    width: 575px;
+    width: 572px;
     height: 4px;
     position: relative;
     left: -25px;
@@ -461,6 +461,7 @@ section.order .btn:hover {
       width: 53px;
       height: 56px;
       position: relative;
+      left: 15px;
     }
     .moveWhenReady{
       top: -68.7vh;
@@ -611,18 +612,74 @@ section.order .btn:hover {
         left: 33px;
         top: 24px
     }
+    /**Cart Table**/
+    .table thead th {
+      vertical-align: middle!important;
+    }
+    .table span.qty {
+      padding: 4px 10px!important;
+      float: right;
+      margin-right: 17px!important;
+    }
+    /**Registration**/
+    #register p {
+        bottom: -15px!important;
+    }
 }
 @media (max-width: 360px){
     section.main .row {
        height: 95px;
     }
-    footer p {
-      top: 20vh;
-      left: -3vh
+    section.category #cat-1 .layout-img {
+        padding: 10px 7px;
+        width: auto;
     }
-    .moveWhenReady{
-      top: -70.9vh;
-      left: 42.1vh;
+    .category #cat-1 img {
+        margin: 8px auto!important;
+    }
+    section.category #cat-10 {
+        max-width: 75%!important;
+        background: transparent url('../images/assets/Group 335@2x.png') 0% 0% no-repeat padding-box;
+        background-size: cover;
+    }
+    section.category #cat-10 #grid-layout {
+        margin-left: 0!important;
+        width: 100%;
+    }
+    section.category #cat-10 .figure h3 {
+        font-size: 0.7rem!important;
+        left: 10px;
+    }
+    footer p {
+        left: 12px;
+    }
+    .moveWhenReady {
+        top: -60.9vh;
+        left: 42.1vh!important;
+    }
+    .modal {
+         height: 70%;   
+    }
+    #categoryModal .row span {
+         margin-top: 5.2vh;
+    }
+    #gridModal button {
+         font-size: 18px;
+    }
+    #categoryModal .row {
+         width: 290px;
+         background-size: 290px 90px;
+         left: 2px;
+    }
+    #categoryModal .row h3 {
+         font-size: 20px;
+    }
+    section.category #cat-12 hr:first-child {
+         width: 150px;
+    } 
+    section.category #cat-12 input.letter, section.category #cat-12 input.padlock {
+         font-size: 15px;
+         padding: 3px;
     }
 }
 /*****NEV STSTYLE***//
@@ -830,9 +887,9 @@ hr{
     position: relative;
     top: 5px;
 }
-.table td span {
+/*.table td span {
   font-size: 18px;
-}
+}*/
 /* Chrome, Safari, Edge, Opera */
 .table input::-webkit-outer-spin-button,
 .table input::-webkit-inner-spin-button {
@@ -1413,51 +1470,214 @@ i.fa-power-off {
     }
 }    
 @media screen and (orientation:landscape)
-and (min-device-width: 640px) 
+and (min-device-width: 768px) 
 and (max-device-width: 823px) {
+  /**NEW STYLES FOR LANSPACE**/
+  section {
+    margin-top: 40vh!important;
+  }
+  nav #hideOnSmallScreen a {
+    width: 50%;
+    left: 30%;
+  }
+  nav a.navbar-brand.cart img {
+    left: 77%;
+    width: 7%;
+    top: 20%;
+  }
+  nav a.navbar-brand.cart span {
+    right: 35.4vh;
+    top: 5.3vh;
+  }
+  section.main .row {
+    height: 35vh; 
+  }
+  section.main .row .col-lg-2 img {
+    left: -10px;
+    max-width: 115px;
+    height: 115px;
+    top: 5px;
+  }
+  section.main .row span {
+    margin-top: 14.2vh;
+  }
   main {
     height: auto;
   }
-  .count{
-      /**This not working for some reason**/
-   }
-   /**Pop up**/
-    #input-container {
-      font-size: 10px;
-      line-height: 0
+  /**product**/
+  section.category #cat-12 .hr {
+    margin: 0 15vh;
+  }
+  section.category #cat-12 hr:first-child {
+    width: 350px;
+  }
+  section.category #cat-12 input.letter, section.category #cat-12 input.padlock {
+    padding: 10px 70px;
+  }
+  section.category #cat-1 .layout-img {  
+    width: 80px;
+  }
+  section.category #cat-1 #block-left-thumbnail {
+      padding: 0px 3px;
+  }
+  section.category #cat-10 .img-thumbnail {
+    padding: 0!important;
+  }
+  section.category #cat-10 .figure h3 {
+    line-height: 1;
+    font-size: 19px;
+  }
+  /**Modal**/
+  .modal {
+    height: 120%;
+  }
+  footer p {
+    left: 30px;
+    bottom: -800px!important;
+  }
+  /**Pop up**/
+  #input-container {
+    font-size: 12px;
+    line-height: 0
+  }
+  .input {
+    font-size: 14px;
+    width: 100%;
+    margin: 9px auto
+  }
+  .seek hr{
+   margin: 0 20px 20px 20px;
+  }
+  .seek label {
+    font-size: .8em;
+    font-weight:700;
+  }
+  .seek button {
+    font-size: 10px;
+    width: 70%;
+    margin:auto
+  }
+  .seek button i {
+    /*position: relative;
+    left: -60%*/
+  }
+  .seek label {
+    font-size: 0.9em;
+    font-weight:600;
+  }
+  #kg {
+    left: 35px;
+    font-size: 14px;
+    top: 35px!important;
+  }
+  #kom {
+    left: 45px;
+    font-size: 14px;
+    top: 35px!important;
+  }
+}
+@media screen and (orientation:landscape)
+and (min-device-width: 640px) 
+and (max-device-width: 767px) {
+    nav #hideOnSmallScreen a {
+       width: 57%;
+       left: 24%;
+    }
+    nav.navbar-light .navbar-nav .nav-link {
+        padding: 10px 0px;
+        margin: 15px 0;
+    }
+    nav a.navbar-brand.cart img {
+        width: 7%;
+        left: 80%;
+        top: 25%;
+    }
+    nav a.navbar-brand.cart span {
+        top: 5.3vh;
+        right: 22.4vh;
+    }
+    section {
+        margin-top: 40vh!important;
+    }
+    section.main .row {
+        height: 30vh;
+        background-size: 572px 120px;
+    }
+    section.main #cat-border h3 {
+        top: 0;
+    }
+    section.main .row span {
+        margin-top: 13.2vh;
+        right: 100px;
+    }
+    section.main .row .col-lg-2 img {
+        left: -12px;
+        max-width: 100px;
+        height: 100px;
+        top: 5px; 
+    }
+    /**product**/
+    section.category #cat-12 .hr {
+      margin: 0 15vh;
+    }
+    section.category #cat-12 hr:first-child {
+      width: 265px;
+    }
+    section.category #cat-12 input.letter, section.category #cat-12 input.padlock {
+      padding: 10px 80px;
+    }
+    section.category #cat-1 .layout-img {  
+      width: 87px;
+    }
+    section.category #cat-1 #block-left-thumbnail {
+        padding: 0px;
+    }
+    section.category #cat-10 {
+      background-size: 125vh;
+      max-width: 67%!important;
+    }
+    section.category #cat-10 .img-thumbnail {
+      padding: 0!important;
+    }
+    section.category #cat-10 .figure h3 {
+      line-height: 1;
+    }
+    #register p {
+        bottom: -15px;
+    }
+    /**modal**/
+    .modal {
+      height: 130%;
     }
     .input {
-      font-size: 10px;
-      width: 70%;
-      margin: 10px auto
-    }
-    .seek hr{
-     margin: 0 20px 20px 20px;
-    }
-    .seek label {
-      font-size: .8em;
-      font-weight:700;
-    }
-    .seek button {
-      font-size: 10px;
-      width: 70%;
-      margin:auto
-    }
-    .seek button i {
-      /*position: relative;
-      left: -60%*/
-    }
-    .seek label {
-      font-size: 0.9em;
-      font-weight:600;
+      font-size: 14px;
+      width: 100%;
+      margin: 9px auto
     }
     #kg {
-      left: 51px;
-      top: 32px;
+      left: 35px;
+      top: 51px!important;
+      font-size: 14px;
     }
     #kom {
       left: 45px;
-      top: 25px;
+      top: 51px!important; 
+      font-size: 14px;
+    }
+    /**Cart Table**/
+    .table td, .table th {
+      font-size: 13px;
+    }
+    .table span.qty {
+      vertical-align: super;
+      padding-bottom: 9px;
+    }
+    .table td span {
+      font-size: 13px;
+    }
+    footer p {
+        left: 25px;
+        bottom: -690px!important;
     }
 }
 @media screen and (orientation:landscape)

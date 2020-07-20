@@ -30,7 +30,11 @@ Route::group(['namespace' => 'Front'], function(){
 	Route::get('/quantity/reduce/{id}/{qty}', 'ShoppingsController@quantity_reduce')->name('quantity.reduce');
 	Route::get('/cart/delete/{id}', 'ShoppingsController@cart_delete')->name('cart.delete');
 	Route::get('/order', 'OrdersController@index')->name('order');
+	Route::get('/order/push', 'OrdersController@push')->name('order.push');
 	Route::post('/order/store', 'OrdersController@order_store')->name('order.store');
+	/**PUSH NOTIFICATION**/
+	Route::get('/push','PushController@push')->name('push');
+	Route::post('/push','PushController@store');
 	// Route::get('/order/delete/cart', 'OrdersController@destroyCart')->name('destroy.cart');
 });
 

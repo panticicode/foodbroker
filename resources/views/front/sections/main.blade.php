@@ -15,6 +15,18 @@
 			bottom: 0;
 		}
 	}
+	@media (max-width: 360px){
+		footer p {
+			bottom: -30vh;
+    		left: -15px;
+		}
+	}
+	@media screen and (orientation:landscape)
+	and (max-device-width: 823px) {
+		footer p {
+    		display: none;
+		}
+	}
 </style>
 @endsection
 <section class="main">
@@ -36,3 +48,17 @@
 		</a>
 	</div>
 </section>
+
+@section('script')
+<!-- <script>
+	Push.create("Postovani,", {
+	    body: "imate novu porudzbenicu",
+	    icon: 'images/icon.png',
+	    onClick: function () {
+	        window.focus();
+	        this.close();
+	    }
+	});
+</script> -->
+@endsection
+	

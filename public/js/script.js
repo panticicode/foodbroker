@@ -32,11 +32,18 @@ $(() => {
   			left: "15px"
   		})
   		$(window).scroll((evt) => {
+  			let width  = $(window).width(),
+				height = $(window).height()
 			if ($(evt.currentTarget).scrollTop() > 0) {
 			    $("nav #hideOnSmallScreen").fadeOut(750)
+			    if(width > height)
+				{
+					$("nav .hideOnSmallScreen").fadeOut(750)
+				}
 			} else {
 			    $("nav #hideOnSmallScreen").fadeIn(500)
-			}
+			    $("nav .hideOnSmallScreen").fadeIn(500)
+			}		
 		})
 		$("nav#navbar").addClass("fixed-top")
 		$(".img-fluid").css("padding", "7px")
@@ -104,7 +111,7 @@ $(() => {
 			        $("#cat-1").css("height", "554px")
 			    }  
 		    },
-		    touchstart: (evt) => {
+		    /*touchstart: (evt) => {
 	            $(".bordered.col-2").css({
 	                flex: "0 0 16.666667%",
 	                maxWidth: "16.666667%"
@@ -121,7 +128,7 @@ $(() => {
 	            $(evt.currentTarget).css({
 		            padding: "0"
 		        })
-	        }
+	        }*/
 		})
 			let preventClick = false
 

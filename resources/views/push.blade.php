@@ -1,0 +1,1 @@
+<a href="{{route('push')}}" class="btn btn-outline-primary btn-block">Make a Push Notification!</a>

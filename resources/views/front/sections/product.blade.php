@@ -53,32 +53,6 @@
 						<figure class="figure">
 							<div class="layout-img" data-id="{{ $product->id }}" data-stock="{{ $product->visibility }}" data-img="{{ $product->getImage($product->image) }}" data-name="{{ $product->title }}" data-price="{{ $product->price }}" data-check="{{ $product->quantity }}">
 								<img src="{{ $product->getImage($product->image) }}" class="figure-img" alt="placeholder">
-							  	<figcaption class="figure-caption">
-							  		<div class="row seek" data-stock="{{ $product->visibility }}">
-										<form action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
-										{{ csrf_field() }}
-											<hr class="mt-4">
-											<div class="form-group" style="margin-bottom: 0" id="input-container">
-												<input type="hidden" name="quantity" value="{{ $product->quantity }}">
-											@if(!$product->quantity)
-												<label for="input">ODABERITE TEZINU:</label>
-												<input type="hidden" name="qty">
-									            <input type="number" class="form-control input" name="weight" step="0.1" min="0" value="0.0">
-												<span id="kg">KG</span>
-									        @else
-									            <label for="input">ODABERITE KOLICINU:</label>
-									            <input type="hidden" name="weight">
-									            <input type="number" class="form-control input" name="qty" min="1" value="1">
-									            <span id="kom">KOM</span>
-											@endif
-									        </div>
-									        <button class="btn btn-danger btn-block mt-4">
-						                		<i class="fas fa-shopping-cart" style="position:relative; margin-right:40%"><span>Dodaj</span>
-						                		</i>
-						                	</button>
-					                	</form>
-					                </div>
-							  	</figcaption>
 						  	</div>
 						  	<h3 data-stock="{{ $product->visibility }}">
 							{!!
@@ -106,6 +80,7 @@
 				check = $(this).attr("data-check"),
 				type  = check == false ? 'KG' : 'KOM',
 				chose = check == false ? 'ODABERITE TEŽINU' : 'ODABERITE KOLIČINU';
+				input = check == false ? '<input type="number" class="form-control input" name="weight" step="0.1" min="0" value="0.0"><input type="hidden" name="quantity" value="0"><span id="kg">KG</span>' : '<input type="number" class="form-control input" name="qty" min="1" value="1"><input type="hidden" name="quantity" value="1"><span id="kom">KOM</span>'
 				
 			$("#gridModal").html(`
 			<div id="layout-modal" class="layout-img">
@@ -117,8 +92,7 @@
 					{{ csrf_field() }}	
 						<div class="form-group" style="margin-bottom: 0" id="input-container">
 							<label for="input">${chose}:</label>
-						    <input type="number" class="form-control input" name="weight" step="0.1" min="0" value="0.0">
-							<span id="kg">${type}</span>
+							${input}
 						</div>
 				        <button class="btn btn-block mt-4">
 	                		DODAJ U KORPU

@@ -160,7 +160,7 @@
 		    </div>
 		    <div class="form-group">
 		        <label for="inputTextField">
-		        	DODATNA PITANJA<span> *</span>
+		        	DODATNA PITANJA
 		        </label>
 		        <textarea id="inputTextField" name="content" class="form-control @error('content') is-invalid @enderror" cols="30" rows="5">{{ old('content') }}</textarea>
 		    </div>

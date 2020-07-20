@@ -31,11 +31,20 @@ class OrdersController extends Controller
     }
     public function cart_create()
     {
+        return redirect('order');
+    }
+    public function push()
+    {
+        Session::flash('success', 'Uspešno ste poslali Vašu porudžbenicu');
+        return redirect()->route('push'); 
+    }
+    public function order_store(Request $request)
+    {
         foreach(Cart::content() as $cart)
         {
             CartItem::create([
                 'row_id' => $cart->rowId,
-                'user_id' => 3,
+                'user_id' => Auth::id(),
                 'product_id' => $cart->id,
                 'name' => $cart->name,
                 'price' => $cart->price,
@@ -43,10 +52,6 @@ class OrdersController extends Controller
                 'weight' => $cart->weight
             ]);
         }
-        return redirect('order');
-    }
-    public function order_store(Request $request)
-    {
         //dd($request->product);
         $this->validate($request, [
             'firstname' => ['required', 'string', 'max:255'],
@@ -58,7 +63,7 @@ class OrdersController extends Controller
             'city' => ['required', 'string', 'max:255'],
             'postal_code' => ['required', 'string', 'max:5'],
             'phone' => ['required', 'string', 'max:13'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users']
+            'email' => ['required', 'string', 'email', 'max:255']
         ]);
         $order = Order::create([
             'firstname' => $request->firstname,
@@ -84,14 +89,11 @@ class OrdersController extends Controller
             'name'    => $order->firstname . " " . $order->lastname,
             'subject' => 'Porudžbenica broj' . " " . $order->id,
             'content' =>  $order,
-            'cartData' => $cart,
+            'cartData' => $cart
         ];
-        Mail::to($data['email'])->send(new SendEmail($data));
+        //Mail::to($data['email'])->send(new SendEmail($data));
 
-        CartItem::whereIn('user_id', [Auth::id()])->delete();
-
-        Session::flash('success', 'Uspešno ste poslali Vašu porudžbenicu');
-        return redirect('/');
+        return redirect()->route('order.push');
     }
     // public function destroyCart()
     // {
