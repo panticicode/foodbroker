@@ -1,5 +1,5 @@
 <nav id="navbar" class="navbar navbar-expand-sm navbar-light mt-3">
-	<a class="navbar-brand logo" href="#"></a>
+	<a class="navbar-brand logo" href="#"><p></p></a>
     <a class="navbar-brand cart" href="{{ route('cart') }}">
         <img src="{{ asset('images/assets/Group 340.png') }}" alt="group340">
         <span class="count">{{ Cart::content()->count() }}</span>

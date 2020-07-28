@@ -1,26 +1,6 @@
 @extends('dashboard.layouts.app')
 @section('main')
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
-  	<div class="sidebar-sticky">
-      	<ul class="nav flex-column">
-         	<li class="nav-item">
-         	<h5 class="display-5">
-            	<a class="nav-link active" href="{{ route('foodbroker.index') }}">
-                	<i class="fa fa-home" aria-hidden="true"></i>
-                	DASHBOARD <span class="sr-only">(current)</span>
-            	</a>
-        	</h5>
-         	</li>
-         	<li class="nav-item">
-            	<a class="nav-link" href="{{ route('products') }}">
-            		<span data-feather="bar-chart-2"></span>
-            		PROIZVODI
-            	</a>
-         	</li>
-      	</ul>
-      <!--Rest of Code if necessary later 'rest.blade.php'-->
-  	</div>
-</nav>
+@include('dashboard.partials.sidebar')
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 @include('dashboard.partials.card-header')
   	<div class="form-group float-left">

@@ -8,7 +8,7 @@
 	}
 	@media (max-width: 575px){
 		footer {
-			position: absolute;
+			position: fixed;
 		}
 		footer p {
 			left: -13px;
@@ -17,7 +17,6 @@
 	}
 	@media (max-width: 360px){
 		footer p {
-			bottom: -30vh;
     		left: -15px;
 		}
 	}
@@ -60,5 +59,20 @@
 	    }
 	});
 </script> -->
+<script>
+	$('footer p').hide()
+
+	$(window).scroll((evt) => {
+	let $target = evt.currentTarget
+	  	if($($target).scrollTop() > 0) 
+	  	{
+	    	$('footer p').show()
+	  	}
+	  	else
+	  	{
+	    	$('footer p').hide()
+	  	}
+	})
+</script>
 @endsection
 	

@@ -1,1 +1,0 @@
-simplePagination.js

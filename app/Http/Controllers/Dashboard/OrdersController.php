@@ -4,18 +4,25 @@ namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Product;
 use App\Models\Order;
 use App\Models\CartItem;
-use Session;
 use Auth;
 
-class FoodBrokerController extends Controller
+class OrdersController extends Controller
 {
     public function __construct()
     {
         $this->middleware('dashboard');
     }
+    /**LOGIC FOR PREVENT ACCESS IF NOT ADMIN**/
+    private function renderTemplate($template, $data)
+    {
+        if(Auth::user()->isAdmin())
+        {
+            return view($template, $data);
+        }
+        return view('privileges');
+    } 
     /**
      * Display a listing of the resource.
      *
@@ -23,11 +30,11 @@ class FoodBrokerController extends Controller
      */
     public function index()
     {
-        $orders = Order::orderBy('id', 'desc')->take(3)->get();
-
-        return view('dashboard/admin/index', [
+        $orders = Order::paginate(5);
+        
+        return $this->renderTemplate('dashboard/admin/orders/index', [
             'orders' => $orders
-        ]);  
+        ]);
     }
 
     /**
@@ -80,9 +87,9 @@ class FoodBrokerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        
+        //
     }
 
     /**
@@ -91,79 +98,26 @@ class FoodBrokerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
-    /**
-    CUSTOM METHOD FOR PRODUCTS
-    **/
-    public function products()
-    {
-        $products = Product::paginate(7);
-        return view('dashboard/foodbroker/products/index', [
-            'products' => $products
-        ]);  
-    } 
-    public function productUpdate(Request $request, $id)
-    {
-        $product = Product::where('id', $id)->first();
-       
-        $product->update([
-            'price' => $request->price
-        ]);
-        Session::flash('success', 'Cena uspešno ažurirana');
-        return redirect()->back();
-    }
-    public function stock($id)
-    {
-        $product = Product::where('id', $id)->first();
-        function checkStock($product)
-        {
-            if($product->visibility)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        $product->update([
-            'visibility' => checkStock($product)
-        ]);
-        Session::flash('success', 'Vidljivost proizvoda je uspešno ažurirana');
-        return redirect()->back();
-    }
-    public function orders()
-    {
-        $orders = Order::paginate(5);
-        
-        return view('dashboard/foodbroker/orders/index', [
-            'orders' => $orders
-        ]);
-    }
     public function details(Order $order)
     {
         $carts = CartItem::where('user_id', $order->user_id)->get();
 
-        return view('dashboard/foodbroker/orders/details', [
+        return view('dashboard/admin/orders/details', [
             'order' => $order,
             'carts' => $carts
         ]);
     }
-    public function destroy_order(Order $order)
+    public function destroy(Order $order)
     {
-        if(Auth::user()->isFoodBroker())
+        if(Auth::user()->isAdmin())
         {   
             $order->delete();
 
-            CartItem::whereIn('product_id', [$order->id])->delete();
+            CartItem::whereIn('product_id', [$order->id])->delete(); 
 
             session()->flash('success', 'Porudžbina je uspešno obrisana');
-            return redirect()->back();
+            return redirect(route('orders.index'));
         }
         return view('privileges');
     }
 }
-

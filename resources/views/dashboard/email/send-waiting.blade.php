@@ -33,10 +33,12 @@ tr:nth-child(even) {
 	    	<th>Naziv Proizvoda</th>
 	    	<th>Količina</th>
 	    	<th>Težina</th>
-	    	<th>Cena Proizvoda</th>
+	    	<th>Cena</th>
+	    	<th>Ukupno</th>
 	  	</tr>
 	</thead>
 	<tbody> 
+		{{ $sumTotal = null }}
 		@foreach($data['cartData'] as $value)
 		<tr>
 			<td>
@@ -46,7 +48,7 @@ tr:nth-child(even) {
 				{{ $value['name'] }}
 			</td>
 			<td>
-				{{ $value['qty'] == true &&  $value['weight'] > 0 ? '/' : $value['weight'] }}  
+				{{ $qty = $value['qty'] == true &&  $value['weight'] > 0 ? '/' : $value['qty'] }}  
 			</td>
 			<td>
 				{{ $value['weight'] == false ? '/': $value['weight']}}  
@@ -54,9 +56,25 @@ tr:nth-child(even) {
 			<td>
 				{{ $value['price'] }}  RSD
 			</td>
+			<p style="display: none">
+				@if($sum = $qty)
+					{{ $sum = $value['weight'] }}
+				@endif
+				@if($sum == '/')
+					{{ $sum = $value['qty'] }}
+				@endif
+			</p>
+			<td>{{ $total = $value['price'] * $sum }} rsd</td>
+			<td style="display: none">{{ $sumTotal += $total }}</td>
 		</tr>	
 		@endforeach
-	</tbody> 
+	</tbody>
+	<hr>
+      	<tr>
+    		<th>TOTAL</th>
+    		<td></td><td></td><td></td><td></td>
+    		<td>{{ $sumTotal }} RSD</td>
+    	</tr> 
 </table>
 <hr>
 <br>

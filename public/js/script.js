@@ -13,8 +13,10 @@ $(() => {
     {
         $("#hideOnSmallScreen").hide()
         $("nav #hideOnSmallScreen a").hide()
+        $("nav a.logo p").hide()
         $("nav #navBarMenu").click((evt) => {
-	       	$("footer p").toggleClass("moveWhenReady")
+	       	$("footer p").toggleClass("hideWhenReady")
+	       	$("nav a.logo p").fadeToggle(500)
 	    })
     }
     if($(window).innerWidth() > 575)

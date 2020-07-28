@@ -7,6 +7,7 @@ body {
 }
 main {
   background: rgba(51, 51, 51, 0.1)!important;
+  margin-top: 2vh!important;
 }
 .feather {
   width: 16px;
@@ -79,7 +80,12 @@ main {
   border-width: 0;
   border-radius: 0;
 }
-
+nav button.navbar-toggler {
+  background: none!important
+}
+.nav-dashboard {
+    display: none;
+}
 .form-control-dark {
   color: #fff;
   background-color: rgba(255, 255, 255, .1);
@@ -117,4 +123,22 @@ main {
 **/
 footer {
     background-color: rgb(239, 235, 235);
+}
+footer p {
+    left: 20%!important;
+    width: 75%!important;
+    height: 100px!important;
+}
+
+/***********FOR DASHBOARD NAV RESPONSITIFITY***********/
+@media (max-width: 767px) {
+    .nav-dashboard {
+        display: block;
+    }
+}
+@media (max-width: 575px){
+    footer p {
+      background-position: 0% 19%!important;
+      position: absolute!important;
+    }
 }

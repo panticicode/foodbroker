@@ -1,6 +1,6 @@
 @extends('front.layouts.app')
 @section('main')
-<section id="privileges" class="privileges">
+<section id="privileges" class="privileges text-center">
 	<img src="{{ asset('images/privileges.jpg') }}" class="img-fluid" alt="privileges">
 	<h1>
 		NEMATE PRISTUP OVOJ STRANICI

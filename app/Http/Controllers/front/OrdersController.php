@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\Orders\SendEmail;
 use Illuminate\Support\Facades\Mail;
 use App\Models\CartItem;
+use App\Models\PushNotification;
 use App\Models\Country;
 use App\Models\Order;
 use Session;
@@ -33,18 +34,15 @@ class OrdersController extends Controller
     {
         return redirect('order');
     }
-    public function push()
-    {
-        Session::flash('success', 'Uspešno ste poslali Vašu porudžbenicu');
-        return redirect()->route('push'); 
-    }
     public function order_store(Request $request)
     {
+        //CREATE CART ITEMS
         foreach(Cart::content() as $cart)
         {
             CartItem::create([
                 'row_id' => $cart->rowId,
                 'user_id' => Auth::id(),
+                'is_send' => 1,
                 'product_id' => $cart->id,
                 'name' => $cart->name,
                 'price' => $cart->price,
@@ -52,6 +50,11 @@ class OrdersController extends Controller
                 'weight' => $cart->weight
             ]);
         }
+        //CREATE PUSH NOTIFICATION
+        PushNotification::create([
+            'user_id' => Auth::id(),
+            'notification' => uniqid()
+        ]);
         //dd($request->product);
         $this->validate($request, [
             'firstname' => ['required', 'string', 'max:255'],
@@ -82,18 +85,25 @@ class OrdersController extends Controller
             'content' => $request->content
         ]);
 
-        $cart = CartItem::where('user_id', Auth::id())->get();
+        $cart = CartItem::where('user_id', Auth::id())
+                          ->where('is_send', 1)->get();
 
         $data = [
-            'email'   => 'panticicode@gmail.com',/**OVDE UBACI EMAIL**/
+            'email'   => 'nemanja.djolovic@targetmedia.rs',/**OVDE UBACI EMAIL**/
             'name'    => $order->firstname . " " . $order->lastname,
             'subject' => 'Porudžbenica broj' . " " . $order->id,
             'content' =>  $order,
             'cartData' => $cart
         ];
-        //Mail::to($data['email'])->send(new SendEmail($data));
+        //dd($data['cartData']);
+        Mail::to($data['email'])->send(new SendEmail($data));
 
         return redirect()->route('order.push');
+    }
+    public function push()
+    {
+        Session::flash('success', 'Uspešno ste poslali Vašu porudžbenicu');
+        return redirect()->route('push'); 
     }
     // public function destroyCart()
     // {

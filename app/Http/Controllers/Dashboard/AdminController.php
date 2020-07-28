@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Auth;
 
 class AdminController extends Controller
@@ -19,18 +20,21 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     /**LOGIC FOR PREVENT ACCESS IF NOT ADMIN**/
-    private function renderTemplate($template)
+    private function renderTemplate($template, $data)
     {
         if(Auth::user()->isAdmin())
         {
-            return view($template);
+            return view($template, $data);
         }
         return view('privileges');
     }   
     /**LOGIC FOR PREVENT ACCESS IF NOT ADMIN**/
     public function index()
     {
-        return $this->renderTemplate('dashboard/admin/index');
+        $orders = Order::orderBy('id', 'desc')->take(3)->get();
+        return $this->renderTemplate('dashboard/admin/index', [
+            'orders' => $orders
+        ]);
     }
 
     /**

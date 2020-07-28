@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Notifications\PushOrder;
 use App\User;
+use App\Models\PushNotification;
 use App\Models\CartItem;
 use Auth;
+use Session;
 use Notification;
 
 class PushController extends Controller
@@ -40,18 +42,21 @@ class PushController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function push(){
-        $carts = CartItem::all();
+        $notification = PushNotification::all();//OVDE MORAM NAPRAVITI DRUGU TABELU 
         $notify = User::whereIn('id', [1,2])->get();
+        //Notification::send($notify,new PushOrder);
 
-        if(count($carts) > 0)
+        if(count($notification) > 0)
         {
             Notification::send($notify,new PushOrder);
-            CartItem::whereIn('user_id', [Auth::id()])->delete();
+            PushNotification::whereIn('user_id', [Auth::id()])->delete();
+            CartItem::whereIn('user_id', [Auth::id()])->update(['is_send' => 0]);
         }
         else
         {
             return redirect('order');
         }
+        Session::flash('success', 'Uspešno ste poslali Vašu porudžbenicu');
         return redirect()->back();
     }
 }

@@ -8,7 +8,7 @@
 	<title>{{ env('APP_NAME') }}</title>
 	<link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('awesome/css/all.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/main/style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/main/style.css?v=1.1') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css?v=1.2') }}">
 	@yield('style')
 </head>

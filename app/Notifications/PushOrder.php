@@ -46,7 +46,7 @@ class PushOrder extends Notification
             ->title('Poštovani')
             ->icon('/icon.png')
             ->body('Imate novu porudžbenicu!')
-            ->action('View App', 'notification_action');
+            ->action('View App', 'view_order');
     }
 
     /**

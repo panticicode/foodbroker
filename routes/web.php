@@ -48,10 +48,15 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard'], function() {
 	Route::resource('/', 'AdminController');
 	Route::resource('/users', 'UsersController');
 	Route::resource('/products', 'ProductsController');
+	Route::get('orders/details/{order}', 'OrdersController@details')->name('details');
+	Route::resource('/orders', 'OrdersController');
 	Route::resource('/categories', 'CategoriesController');
 	/**FOODBROKER ROUTES**/
 	Route::get('foodbroker/products', 'FoodBrokerController@products')->name('products');
 	Route::put('foodbroker/product/update/{id}', 'FoodBrokerController@productUpdate')->name('foodbroker.product.update');
 	Route::get('foodbroker/product/stock/{id}', 'FoodBrokerController@stock')->name('foodbroker.product.stock');
+	Route::get('foodbroker/orders', 'FoodBrokerController@orders')->name('orders');
+	Route::get('foodbroker/orders/details/{order}', 'FoodBrokerController@details')->name('orders.details');
+	Route::delete('foodbroker/orders/destroy/{order}', 'FoodBrokerController@destroy_order')->name('destroy_order');
 	Route::resource('foodbroker', 'FoodBrokerController');
 });

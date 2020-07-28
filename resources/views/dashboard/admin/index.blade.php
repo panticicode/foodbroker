@@ -22,28 +22,21 @@
         <table class="table table-striped table-sm">
             <thead>
               	<tr>
-                    <th>#</th>
                     <th>IME I PREZIME</th>
                     <th>ADRESA</th>
                     <th>BROJ TELEFONA</th>
-                    <th>PROIZVOD</th>
+                    <th>DATUM I VREME</th>
               	</tr>
             </thead>
             <tbody>
+                @foreach($orders as $order)
                 <tr>
-                    <td>792</td>
-                    <td>Marković Marko</td>
-                    <td>Zemunski Kej 21</td>
-                    <td>06212345679</td>
-                    <td>Mleko</td>
-                </tr>
-                <tr>
-                    <td>793</td>
-                    <td>Janković Janko</td>
-                    <td>Palilulska 23</td>
-                    <td>06412345679</td>
-                    <td>Ajvar</td>
-                </tr>
+                   <td>{{ $order->firstname . ' ' . $order->lastname }}</td>
+                   <td>{{ $order->address }}</td>
+                   <td>{{ $order->phone }}</td>
+                   <td>{{ $order->delivery_date . ' ' . $order->delivery_time }}</td>   
+                </tr>     
+                @endforeach
             </tbody>
         </table>
     </div>

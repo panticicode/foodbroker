@@ -18,7 +18,7 @@ class CreatePushSubscriptionsTable extends Migration
             $table->nullableMorphs('subscribable');
             $table->string('content_encoding')->nullable();
             $table->increments('id');
-            $table->bigInteger('user_id')->unsigned()->index();
+            $table->bigInteger('user_id')->unsigned()->nullable()->index();
             $table->string('endpoint', 255)->unique();
             $table->string('public_key')->nullable();
             $table->string('auth_token')->nullable();

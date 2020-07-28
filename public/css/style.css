@@ -388,6 +388,15 @@ section.order .btn:hover {
         width: 183px;
         height: 43px;
     }
+    nav a.logo p {
+        position:relative;
+        background: transparent url('../images/assets/Group 356.png') 0% 0% no-repeat padding-box;
+        width: 53px;
+        height: 56px;
+        float: right;
+        left: 80%;
+        top: -10px;
+    }
     nav a.cart img{
         left: 3px;
         width: 50px!important;
@@ -463,9 +472,12 @@ section.order .btn:hover {
       position: relative;
       left: 15px;
     }
-    .moveWhenReady{
+    /*.moveWhenReady{
       top: -68.7vh;
       left: 34.6vh;
+    }*/
+    .hideWhenReady{
+      display: none;
     }
     /**CATEGORY**/
     section.category #cat-12 .hr {
@@ -561,7 +573,7 @@ section.order .btn:hover {
     }*/
     h3[data-stock='0'] {
         top: -54px!important;
-        left: 3px!important;
+        left: 8px!important;
     }
     /**MODALS**/
     #categoryModal {
@@ -653,10 +665,10 @@ section.order .btn:hover {
     footer p {
         left: 12px;
     }
-    .moveWhenReady {
+    /*.moveWhenReady {
         top: -60.9vh;
         left: 42.1vh!important;
-    }
+    }*/
     .modal {
          height: 70%;   
     }
@@ -1468,7 +1480,34 @@ i.fa-power-off {
       left: 38px;
       top: 25px;
     }
-}    
+}
+/**Footer Info Icon Defferent Phones**/
+@media only screen and (max-width: 414px) {
+  nav a.logo p {
+      left: 105%;
+  }
+}
+@media only screen and (max-width: 411px) {
+  nav a.logo p {
+      left: 103%;
+  }
+}
+@media only screen and (max-width: 375px) {
+  nav a.logo p {
+      left: 87%;
+  }
+} 
+@media only screen and (max-width: 360px) {
+  nav a.logo p {
+      left: 80%;
+  }
+}
+@media only screen and (max-width: 320px) {
+  nav a.logo p {
+      left: 61%;
+  }
+} 
+/**LandSpace**/   
 @media screen and (orientation:landscape)
 and (min-device-width: 768px) 
 and (max-device-width: 823px) {
