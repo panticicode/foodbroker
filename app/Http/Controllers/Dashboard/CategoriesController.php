@@ -49,7 +49,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return $this->renderTemplate('dashboard/admin/categories/create');
+        //return $this->renderTemplate('dashboard/admin/categories/create');
     }
 
     /**
@@ -63,21 +63,26 @@ class CategoriesController extends Controller
         if(Auth::user()->isAdmin())
         {  
             $this->validate($request, [
-                'category' => 'required',
-                'image' => 'required|image'
+                'name' => 'required',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
             ]);
-
+            // dd($request->image);
             $image = $request->image;
             $imageNewName = time(). $image->getClientOriginalName();
             $image_path = 'images/categories/';
             $image->move($image_path, $imageNewName);
 
             $category = new Category;
-            $category->title = $request->category;
+            $category->title = $request->name;
             $category->image = $imageNewName;
             $category->save();
-            Session::flash('success', 'Uspešno ste kreirali novu kategoriju');
-            return redirect()->route('categories.index');
+
+            // Session::flash('success', 'Uspešno ste kreirali novu kategoriju');
+            // return redirect()->route('categories.index');
+            return response()->json([
+                'create' => "Uspešno ste kreirali novu kategoriju",
+                'category' => $category
+            ]);
         }
         return view('privileges');
     }
@@ -101,9 +106,9 @@ class CategoriesController extends Controller
      */
     public function edit(Category $category)
     {
-         return $this->renderTemplateWithData('dashboard/admin/categories/edit', [
-            'category' => $category
-        ]);
+        // return $this->renderTemplateWithData('dashboard/admin/categories/edit', [
+        //     'category' => $category
+        // ]);
     }
 
     /**
@@ -118,21 +123,27 @@ class CategoriesController extends Controller
         if(Auth::user()->isAdmin())
         {
             $this->validate($request, [
-                'category' => 'required' 
+                'name' => 'required' 
             ]);
+            // dd($request->all());
             if($request->hasFile('image')):
                 $image = $request->image;
                 $image_path = 'images/categories/';
+                unlink($image_path . $category->image); 
                 $imageNewName = time() . $image->getClientOriginalName();
                 $image->move($image_path, $imageNewName);
                 $category->image = $imageNewName;
             endif; 
 
-            $category->title = $request->category;
+            $category->title = $request->name;
             
             $category->save();
-            Session::flash('success', 'Kategorija je uspešno ažurirana');
-            return redirect()->route('categories.index');
+            // Session::flash('success', 'Kategorija je uspešno ažurirana');
+            // return redirect()->route('categories.index');
+            return response()->json([
+                'edit' => 'Kategorija je uspešno ažurirana',
+                'category' => $category
+            ]);
         }
         return view('privileges');
     }
@@ -162,8 +173,11 @@ class CategoriesController extends Controller
             }else{ 
                 $category->delete();
             } 
-            session()->flash('success', 'Kategorija je uspešno obrisana');
-            return redirect(route('categories.index'));
+            // session()->flash('success', 'Kategorija je uspešno obrisana');
+            // return redirect(route('categories.index'));
+            return response()->json([
+                'danger' => 'Kategorija je uspešno obrisana'
+            ]);
         }
         return view('privileges');
     }

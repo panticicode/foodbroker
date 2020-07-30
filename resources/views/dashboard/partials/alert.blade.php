@@ -17,6 +17,17 @@
 	</div>	
 </div>
 @endif
+<div class="container">
+	<div class="alert alert-success text-center" style="display:none">
+		
+	</div>
+	<div class="alert alert-info text-center" style="display:none">
+		
+	</div>
+	<div class="alert alert-danger text-center" style="display:none">
+		
+	</div>
+</div>
 
 
 

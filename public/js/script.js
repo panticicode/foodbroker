@@ -48,7 +48,8 @@ $(() => {
 			}		
 		})
 		$("nav#navbar").addClass("fixed-top")
-		$(".img-fluid").css("padding", "7px")
+		/**Bellow is for dashboard img index blade**/
+		//$(".img-fluid").css("padding", "7px")
     }
     /**NAVIGATION**/
 	/**Section Main **/

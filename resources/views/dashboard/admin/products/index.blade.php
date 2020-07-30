@@ -4,7 +4,8 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 @include('dashboard.partials.card-header')
   	<div class="form-group float-left">
-    	<a href="{{ route('products.create') }}" class="btn btn-outline-primary"><i class="fas fa-plus-square"></i>
+    	<a id="create" href="javascript:void(0)" class="btn btn-outline-primary">
+    		<i class="fas fa-plus-square"></i>
     	</a>
   	</div>
 	<h2 class="text-center">Proizvodi</h2>
@@ -20,9 +21,9 @@
 	              <th>NA STANJU</th>
 	        	</tr>
 	      	</thead>
-	      	<tbody>
+	      	<tbody class="content-table">
 	        @foreach($products as $product)
-	          	<tr>
+	          	<tr id="row_{{ $product->id }}">
 					<td>{{ $product->id }}</td>
 					<td>{{ $product->title }}</td>
 					<td>
@@ -31,22 +32,31 @@
 					<td>
 						<img class="img-fluid" src="{{ $product->getImage($product->image) }}" style="max-width:50px">
 					</td>
-					<td>{{ $product->price }} RSD</td>
+					<td>{{ $product->price }}</td>
 					<td>
 						{{ $product->visibility ? 'DA' : 'NE' }}
 					</td>
+					<!--FOR JQUERY ONLY-->
+					<td style="display:none">
+						{{ $product->visibility }}
+					</td>
+					<td style="display:none">
+						{{ $product->quantity }}
+					</td>
+					<td style="display:none">
+						{{ $product->description }}
+					</td>
+					<td style="display:none">
+						{{ $product->cat_id - 1 }}
+					</td>
+					<!--FOR JQUERY ONLY-->
 					<td>
-						<a href="{{ route('products.edit', $product) }}" class="btn btn-outline-success btn-sm rounded-3">
-							<i class="fas fa-edit"></i>
-						</a>
-						<form action="{{ route('products.destroy', $product) }}" method="post" class="d-inline">
-						{{ csrf_field() }}
-						{{ method_field('DELETE') }}
-						<input type="hidden" name="image" value="{{ $product->image }}">
-							<button class="btn btn-outline-danger btn-sm">
-								<i class="fas fa-trash-alt"></i>
-							</button>
-						</form>
+						<a id="edit" href="javascript:void(0)" class="btn btn-outline-success btn-sm rounded-3">
+					    	<i class="fas fa-edit"></i>
+					    </a>
+						<a id="delete" href="javascript:void(0)" class="btn btn-outline-danger btn-sm rounded-3">
+					    	<i class="fas fa-trash-alt"></i>
+					    </a>
 					</td>
   				</tr>	
 	        @endforeach
@@ -58,4 +68,5 @@
   	</div>
   
 </main>
+@include('dashboard.modals.products.ajax')
 @endsection

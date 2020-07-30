@@ -492,7 +492,6 @@ class ComposerStaticInitf30bb576037437779add84c56d71238b
         'App\\Http\\Controllers\\Dashboard\\CategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/CategoriesController.php',
         'App\\Http\\Controllers\\Dashboard\\FoodBrokerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/FoodBrokerController.php',
         'App\\Http\\Controllers\\Dashboard\\OrdersController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/OrdersController.php',
-        'App\\Http\\Controllers\\Dashboard\\ProductsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/ProductsController.php',
         'App\\Http\\Controllers\\Dashboard\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/UsersController.php',
         'App\\Http\\Controllers\\FrontController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontController.php',
         'App\\Http\\Controllers\\Front\\OrdersController' => __DIR__ . '/../..' . '/app/Http/Controllers/front/OrdersController.php',

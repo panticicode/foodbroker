@@ -96,7 +96,14 @@ nav button.navbar-toggler {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
-
+/**Text-transfor**/
+.text-transform {
+   text-transform: uppercase; 
+}
+/**IMG MODAL**/
+.img-modal {
+   max-width: 100%!important
+}
 /*
  * Utilities
  */
@@ -127,7 +134,7 @@ footer {
 footer p {
     left: 20%!important;
     width: 75%!important;
-    height: 100px!important;
+    height: 115px!important;
 }
 
 /***********FOR DASHBOARD NAV RESPONSITIFITY***********/

@@ -28,9 +28,13 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::paginate(7);
+        $categories = Category::all();
+        
 
         return $this->renderTemplate('dashboard/admin/products/index', [
-            'products' => $products
+            'products' => $products,
+            'categories' => $categories
+            
         ]);
     }
 
@@ -41,11 +45,11 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        // $categories = Category::all();
 
-        return $this->renderTemplate('dashboard/admin/products/create', [
-            'categories' => $categories
-        ]);
+        // return $this->renderTemplate('dashboard/admin/products/create', [
+        //     'categories' => $categories
+        // ]);
     }
 
     /**
@@ -65,12 +69,13 @@ class ProductsController extends Controller
                 'image' => 'required|image',
                 'description' => 'required',
             ]);
+            
             $image = $request->image;
             $imageNewName = time(). $image->getClientOriginalName();
             $image_path = 'images/products/';
             $image->move($image_path, $imageNewName);
            
-            if($request->visibility == 'NE')
+            if($request->visibility == 'OUT OF STOCK')
             {
                 $visibility = 0;
             }
@@ -86,17 +91,23 @@ class ProductsController extends Controller
             {
                 $productType = 0;
             }
+            //dd($request->all());
             $product = Product :: create([
                 'title' => $request->title,
-                'cat_id' => $request->category,
+                'cat_id' => $request->category + 1,
                 'price' => $request->price,
                 'image' => $imageNewName,
                 'description' => $request->description,
                 'visibility' => $visibility,
                 'quantity' => $productType 
             ]);
-            Session::flash('success', 'Uspešno ste dodali novi proizvod');
-            return redirect()->route('products.index');
+            $productCategory = Category::all();
+            
+            return response()->json([
+                'create' => "Uspešno ste dodali novi proizvod",
+                'product' => $product,
+                'categories' => $productCategory
+            ]);
         }
         return view('privileges');
     }
@@ -120,11 +131,11 @@ class ProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = Category::all();
-        return $this->renderTemplate('dashboard/admin/products/edit', [
-            'product' => $product,
-            'categories' => $categories
-        ]);
+        // $categories = Category::all();
+        // return $this->renderTemplate('dashboard/admin/products/edit', [
+        //     'product' => $product,
+        //     'categories' => $categories
+        // ]);
     }
 
     /**
@@ -147,11 +158,13 @@ class ProductsController extends Controller
             if($request->hasFile('image')):
                 $image = $request->image;
                 $image_path = 'images/products/';
+                unlink($image_path . $product->image); 
                 $imageNewName = time() . $image->getClientOriginalName();
                 $image->move($image_path, $imageNewName);
                 $product->image = $imageNewName;
             endif; 
-            if($request->visibility == 'NE'):
+            $productCategory = Category::all();
+            if($request->visibility == 'OUT OF STOCK'):
                 $visibility = 0;
             else:
                 $visibility = 1;
@@ -163,15 +176,21 @@ class ProductsController extends Controller
             endif;
 
             $product->title = $request->title;
-            $product->cat_id = $request->category;
+            $product->cat_id = $request->category + 1;
             $product->price = $request->price;
             $product->description = $request->description; 
             $product->visibility = $visibility;
             $product->quantity = $productType;
             //dd($request->all());
             $product->save();
-            Session::flash('success', 'Proizvod je uspešno ažuriran');
-            return redirect()->route('products.index');
+            // Session::flash('success', 'Proizvod je uspešno ažuriran');
+            // return redirect()->route('products.index');
+            
+            return response()->json([
+                'edit' => "Proizvod je uspešno ažuriran",
+                'product' => $product,
+                'categories' => $productCategory
+            ]);
         }
         return view('privileges');
     }
@@ -202,8 +221,11 @@ class ProductsController extends Controller
             }else{ 
                 $product->delete();
             } 
-            session()->flash('success', 'Proizvod je uspešno obrisan');
-            return redirect(route('products.index'));
+            // session()->flash('success', 'Proizvod je uspešno obrisan');
+            // return redirect(route('products.index'));
+            return response()->json([
+                'danger' => 'Proizvod je uspešno obrisan'
+            ]);
         }
         return view('privileges');
     }

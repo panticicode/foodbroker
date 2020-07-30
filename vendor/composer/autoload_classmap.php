@@ -18,7 +18,6 @@ return array(
     'App\\Http\\Controllers\\Dashboard\\CategoriesController' => $baseDir . '/app/Http/Controllers/Dashboard/CategoriesController.php',
     'App\\Http\\Controllers\\Dashboard\\FoodBrokerController' => $baseDir . '/app/Http/Controllers/Dashboard/FoodBrokerController.php',
     'App\\Http\\Controllers\\Dashboard\\OrdersController' => $baseDir . '/app/Http/Controllers/Dashboard/OrdersController.php',
-    'App\\Http\\Controllers\\Dashboard\\ProductsController' => $baseDir . '/app/Http/Controllers/Dashboard/ProductsController.php',
     'App\\Http\\Controllers\\Dashboard\\UsersController' => $baseDir . '/app/Http/Controllers/Dashboard/UsersController.php',
     'App\\Http\\Controllers\\FrontController' => $baseDir . '/app/Http/Controllers/FrontController.php',
     'App\\Http\\Controllers\\Front\\OrdersController' => $baseDir . '/app/Http/Controllers/front/OrdersController.php',
