@@ -25,13 +25,14 @@
 	      	</thead>
 	      	<tbody>
 	        @foreach($orders as $order)
-	          	<tr>
+	          	<tr id="row_{{ $order->id }}">
 					<td>{{ $order->id }}</td>
 					<td>
 						{{ $order->firstname . ' ' . $order->lastname }}
 					</td>
 					<td>{{ $order->email }}</td>
 					<td>{{ $order->city }}</td>
+					<td>{{ $order->address }}</td>
 					<td>{{ $order->phone }}</td>
 					<td>
 					{{ date_format(date_create($order->delivery_date), "m.d") }}
@@ -40,21 +41,22 @@
 					{{ date_format(date_create($order->delivery_time), "H:i") }}
 					</td>
 					<td>{{ $order->country_id }}</td>
-					<td>{{ substr($order->content,0, 20) }}..</td>
+					<td style="display: none">{{ $order->company }}</td>
+					<td style="display: none">{{ $order->apartment }}</td>
+					<td style="display: none">{{ $order->postal_code }}</td>
+					<td style="display: none">{{ $order->user_id }}</td>
+					<td style="display: none">{{ $order->content }}</td>
 					<td>
-						<a href="{{ route('orders.details', $order) }}" class="btn btn-outline-primary btn-sm"><i class="fas fa-edit"></i></a>
+						<a id="edit" href="javascript:void(0)" class="btn btn-outline-primary btn-sm">
+							<i class="fas fa-edit"></i>
+						</a>
 					</td>
 					<td>
-						<form action="{{ route('destroy_order', $order) }}" method="post" class="d-inline">
-						{{ csrf_field() }}
-						{{ method_field('DELETE') }}
-						<input type="hidden" name="image" value="{{ $order->id }}">
-							<button class="btn btn-outline-danger btn-sm">
-								<i class="fas fa-trash-alt"></i>
-							</button>
-						</form>
+						<a id="delete" href="javascript:void(0)" class="btn btn-outline-danger btn-sm">
+							<i class="fas fa-trash-alt"></i>
+						</a>
 					</td>
-  				</tr>	
+  				</tr>		
 	        @endforeach
 	      	</tbody>
 	    </table>
@@ -62,6 +64,6 @@
 	    	{{ $orders->appends($_GET)->links() }}
 	    </div>
   	</div>
-  
 </main>
+@include('dashboard.modals.foodbroker.orders.ajax')
 @endsection

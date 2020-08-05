@@ -108,12 +108,23 @@ class FoodBrokerController extends Controller
     public function productUpdate(Request $request, $id)
     {
         $product = Product::where('id', $id)->first();
-       
+        
+        $price = $request->price;
+        if($price == NULL)
+        {
+            $price = $product->price;
+        }
         $product->update([
-            'price' => $request->price
+            'price' => $price
         ]);
-        Session::flash('success', 'Cena uspešno ažurirana');
-        return redirect()->back();
+
+        // dd($request->all());
+        // Session::flash('success', 'Cena uspešno ažurirana');
+        // return redirect()->back();
+        return response()->json([
+            'edit' => "Cena uspešno ažurirana",
+            'product' => $product
+        ]);
     }
     public function stock($id)
     {
@@ -132,8 +143,12 @@ class FoodBrokerController extends Controller
         $product->update([
             'visibility' => checkStock($product)
         ]);
-        Session::flash('success', 'Vidljivost proizvoda je uspešno ažurirana');
-        return redirect()->back();
+        // Session::flash('success', 'Vidljivost proizvoda je uspešno ažurirana');
+        // return redirect()->back();
+        return response()->json([
+            'visibility' => "Vidljivost je uspešno promenjena",
+            'product' => $product
+        ]);
     }
     public function orders()
     {
@@ -147,8 +162,12 @@ class FoodBrokerController extends Controller
     {
         $carts = CartItem::where('user_id', $order->user_id)->get();
 
-        return view('dashboard/foodbroker/orders/details', [
-            'order' => $order,
+        // return view('dashboard/foodbroker/orders/details', [
+        //     'order' => $order,
+        //     'carts' => $carts
+        // ]);
+        return response()->json([
+            'edit' => "Detalji porudzbenice",
             'carts' => $carts
         ]);
     }

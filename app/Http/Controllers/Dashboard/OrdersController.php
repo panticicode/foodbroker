@@ -102,8 +102,12 @@ class OrdersController extends Controller
     {
         $carts = CartItem::where('user_id', $order->user_id)->get();
 
-        return view('dashboard/admin/orders/details', [
-            'order' => $order,
+        // return view('dashboard/admin/orders/details', [
+            // 'order' => $order,
+            // 'carts' => $carts
+        // ]);
+		return response()->json([
+            'edit' => "Detalji porudzbenice",
             'carts' => $carts
         ]);
     }
@@ -115,8 +119,11 @@ class OrdersController extends Controller
 
             CartItem::whereIn('product_id', [$order->id])->delete(); 
 
-            session()->flash('success', 'Porudžbina je uspešno obrisana');
-            return redirect(route('orders.index'));
+            // session()->flash('success', 'Porudžbina je uspešno obrisana');
+            // return redirect(route('orders.index'));
+			return response()->json([
+                'danger' => 'Porudžbina je uspešno obrisana'
+            ]);
         }
         return view('privileges');
     }

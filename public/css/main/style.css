@@ -104,6 +104,21 @@ nav button.navbar-toggler {
 .img-modal {
    max-width: 100%!important
 }
+/**TABLE DATA**/
+#adminProduct td img,
+#foodbrokerProduct td img {
+    position: relative;
+    left: -35%;
+    display: block;
+    margin: 0 auto;
+}
+.table td, .table th {
+    padding: 0.5rem!important;  
+}
+#cartCustomer td, 
+#cartCustomer th{
+    width: 10px;
+}
 /*
  * Utilities
  */
@@ -147,5 +162,10 @@ footer p {
     footer p {
       background-position: 0% 19%!important;
       position: absolute!important;
+    }
+}
+@media (min-width: 576px){
+    .modal-dialog {
+      max-width: 767px;
     }
 }

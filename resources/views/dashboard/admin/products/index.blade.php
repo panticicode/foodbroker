@@ -10,7 +10,7 @@
   	</div>
 	<h2 class="text-center">Proizvodi</h2>
 	<div class="table-responsive">
-	   	<table class="table table-striped table-sm">
+	   	<table id="adminProduct" class="table table-striped table-sm">
 	      	<thead>
 	        	<tr>
 	              <th>#</th>
@@ -30,7 +30,7 @@
 					{{$product->category->title}}
 					</td>
 					<td>
-						<img class="img-fluid" src="{{ $product->getImage($product->image) }}" style="max-width:50px">
+						<img class="img-fluid" src="{{ $product->getImage($product->image) }}" style="max-width:50px; height: 60px">
 					</td>
 					<td>{{ $product->price }}</td>
 					<td>
